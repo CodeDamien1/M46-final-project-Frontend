@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import '../App.css';
+import { useState } from 'react'
+import { loginUser } from '../utils'
+import '../App.css'
 
 function Login({ setUser, setPage, users })
 {
@@ -7,51 +8,50 @@ function Login({ setUser, setPage, users })
     const [password, setPassword] = useState()
     const [message, setMessage] = useState()
 
-    function login()
+    const userLogin = async (e) => 
     {
-        let loginSuccessful = false
+        e.preventDefault()
 
-        if (users.data[username] && users.data[username].password === password)
+        setUser()
+        const data = await loginUser(username, password)
+        console.log(data.user)
+        if (data.loginValid)
         {
-               loginSuccessful = true
-        }
-
-        if (loginSuccessful)
-        {
-            
-            setUser({username:username})
-            setPage('l')
+          setUser({username:username})
+          setPage('l')
         }
         else
         {
-            setMessage('Login details incorrect')
+          setMessage(data.message)
         }
     }
 
+
     function register()
     {
-        alert('register')
         setPage('r')
     }
 
   return (
     <div className="App">
       <div>login</div>
-      <div className="data-entry">
-        <label>
-            Username:
-            <input type="text" onChange={e => setUsername(e.target.value)} required />
-        </label>
-        <label>
-            Password:
-            <input type="text" onChange={e => setPassword(e.target.value)} required />
-        </label>
-        <div>
-            <input type="button" value="login" onClick={ () => login() }/>
-            <input type="button" value="register" onClick={ () => register() }/>
+      <form onSubmit={userLogin}>
+        <div className="data-entry">
+          <label>
+              Username:
+              <input type="text" onChange={e => setUsername(e.target.value)} required />
+          </label>
+          <label>
+              Password:
+              <input type="text" onChange={e => setPassword(e.target.value)} required />
+          </label>
+          <div>
+              <input type="submit" value="login" />
+              <input type="button" value="register" onClick={ () => register() } />
+          </div>
         </div>
-        <div>{message}</div>
-      </div>
+      </form>
+      <div>{message}</div>
     </div>
   )
 }
