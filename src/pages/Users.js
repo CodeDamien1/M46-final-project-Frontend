@@ -4,6 +4,7 @@ import '../App.css';
 function Users({ setPage, user, users })
 {
     const [selected, setSelected] = useState()
+    const [userList, setUserList] = useState(users.array)
 
   return (
     <div className="App">
