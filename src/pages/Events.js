@@ -12,8 +12,7 @@ function Events({ setPage, user, setEvent, setEvents, setCities, dmas, dma })
 
             try 
             {
-                let response = await fetch('https://app.ticketmaster.com/discovery/v2/events.json?&dmaId='+dma+'&apikey=n2Y9JJ9fQzEOez9pLe5PNoxrHWhlE3tx')
-                //let response = await fetch('https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=605&apikey=cAnBaAqHpdzdMJ5O67XOv52RdwJpNn1G')
+                let response = await fetch(`${process.env.REACT_APP_API_URL}${dma}${process.env.REACT_APP_API_KEY}`)
   
                 if (!response.ok) 
                 {
@@ -74,6 +73,7 @@ function Events({ setPage, user, setEvent, setEvents, setCities, dmas, dma })
 
 
         fetchData()
+        //eslint-disable-next-line
       }, [])
 
 
