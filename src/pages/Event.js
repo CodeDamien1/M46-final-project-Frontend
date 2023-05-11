@@ -5,8 +5,8 @@ function Event({ setPage, events, event, cities, users })
 
     function details(city)
     {
-        let dates = 'These are the dates' + "\n"
-        for (let i in events[event].city)
+        let dates = 'These are the dates'
+        for (let i in events[event][city])
         {
             dates += i + "\n"
         }
