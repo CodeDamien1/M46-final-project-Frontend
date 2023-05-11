@@ -80,7 +80,7 @@ export const registerUser = async (username, password) =>
 export const getUsers = async () =>
 {
     console.log('getUsers index.js')
-    console.log('getUsers')
+
     try 
     {
         const response = await fetch
@@ -90,9 +90,16 @@ export const getUsers = async () =>
             }
         )
 
-        const data = await response.json()    
-
-        return {users:data.users, message:data.message}
+        const data = await response.json() 
+        
+        if (data.errrorMessage)
+        {
+            return {message:data.errorMessage}
+        }
+        else
+        {
+            return {users:data.users, message:data.message}
+        }
     } 
     catch (error) 
     {
