@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { registerUser } from '../utils'
-import '../App.css'
+import { registerUser } from '../../utils'
+import '../../App.css'
+import './Register.css'
 
 function Register({ setPage })
 {
