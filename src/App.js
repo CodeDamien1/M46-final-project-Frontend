@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './pages/Header'
 import Login from './pages/Login'
@@ -307,7 +307,7 @@ function App()
       this.list.push(dma)
     }
   }
-  const dmas = new Dmas()
+
 
 
   const [user, setUser] = useState()
@@ -316,6 +316,13 @@ function App()
   const [event, setEvent] = useState()
   const [cities, setCities] = useState()
   const [dma, setDma] = useState(607)
+const [dmas, setDmas] = useState()
+useEffect(()=> {
+  const tempDmas = new Dmas()
+  setDmas(tempDmas);
+  // eslint-disable-next-line
+}, []
+)
 
   const users = {data:[], array:[]}
   users.data = 
@@ -338,7 +345,7 @@ function App()
       {
         user 
         ? (page === 'l' ) 
-          ? <Events setPage={setPage} user={user} setEvent={setEvent} setEvents={setEvents} setCities={setCities} dmas={dmas} dma={dma} /> 
+          ? <Events setPage={setPage} user={user} setEvent={setEvent} setEvents={setEvents} setCities={setCities} dmas={dmas} dma={dma} setDma={setDma} /> 
           : (page === 'e')
             ? <Event setPage={setPage} events={events} event={event} cities={cities} user={user} /> 
             : (page === 'u' ) 

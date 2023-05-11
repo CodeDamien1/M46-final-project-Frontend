@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import '../App.css';
 
 function Event({ setPage, events, event, cities, users })
@@ -7,7 +6,7 @@ function Event({ setPage, events, event, cities, users })
     function details(city)
     {
         let dates = 'These are the dates' + "\n"
-        for (let i in events[event][city])
+        for (let i in events[event].city)
         {
             dates += i + "\n"
         }
