@@ -38,7 +38,7 @@ export const loginUser = async (username, password) =>
     catch (error) 
     {
         console.log('Login User: ' + error)  
-        return {message:'Login error - ' + error, loginValid:false}     
+        return {message:'Login error (index.js) - ' + error, loginValid:false}     
     }
 }
 
@@ -73,6 +73,31 @@ export const registerUser = async (username, password) =>
     catch (error) 
     {
         console.log(error) 
-        return {message:'Create User error - ' + error.message, userCreated:false}      
+        return {message:'Create User error (index.js) - ' + error.message, userCreated:false}      
+    }
+}
+
+export const getUsers = async () =>
+{
+    console.log('getUsers index.js')
+    console.log('getUsers')
+    try 
+    {
+        const response = await fetch
+        (`${process.env.REACT_APP_BASE_URL}/users/getallusers`,
+            {method: 'GET'
+            ,headers: {"Content-Type": "application/json"}
+            }
+        )
+
+        const data = await response.json()    
+
+        return {users:data.users, message:data.message}
+    } 
+    catch (error) 
+    {
+        console.log(error)    
+        return {message:'Get Users error (index.js) - ' + error.message}
+    
     }
 }

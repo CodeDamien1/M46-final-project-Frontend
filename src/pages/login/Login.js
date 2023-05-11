@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { loginUser } from '../utils'
-import '../App.css'
+import { loginUser } from '../../utils'
+import '../../App.css'
+import './Login.css'
 
-function Login({ setUser, setPage, users })
+function Login({ setUser, setPage })
 {
     const [username, setUsername] = useState()
     const [password, setPassword] = useState()
@@ -46,7 +47,7 @@ function Login({ setUser, setPage, users })
               <input type="text" onChange={e => setPassword(e.target.value)} required />
           </label>
           <div>
-              <input type="submit" value="login" />
+              <input type="submit" value="login" className="login-button"/>
               <input type="button" value="register" onClick={ () => register() } />
           </div>
         </div>
