@@ -5,24 +5,25 @@ import { deleteUser } from '../../utils'
 import '../../App.js'
 import './User.css'
 
+// adding try catch block to handle any errors that may occur 
 function User({ setPage, selectedUser, user })
 {
-
   const [message, setMessage] = useState()
 
-  const userDelete = async (e) => 
+  const handleUserDelete = async (e) => 
   {
     e.preventDefault()
-
     setMessage()
 
-    const data = await deleteUser()
-
-    if (data)
-    {
-      console.log('User.js data ', data)
+    try {
+      const data = await deleteUser()
+      if (data) {
+        console.log('User.js Data ', data)
+      }
+    } catch {
+      console.log('User.js error - ', data)
+      setMessage(error)
     }
- 
   }
 
   return (
