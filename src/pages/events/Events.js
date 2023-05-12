@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import '../App.css';
+import '../../App.css'
+import './Events.css'
 
-function Events({ setPage, user, setEvent, setEvents, setCities, dmas, dma })
+function Events({ setPage, user, setEvent, setEvents, setCities, dma })
 {
     const [tours, setTours] = useState([])
 
@@ -32,7 +33,6 @@ function Events({ setPage, user, setEvent, setEvents, setCities, dmas, dma })
                     let date = data['_embedded']['events'][i]['dates']['start'].localDate
                     let time = data['_embedded']['events'][i]['dates']['start'].localTime
                     let city = data['_embedded']['events'][i]['_embedded']['venues'][0]['city'].name
-                    //let state = data['_embedded']['events'][i]['_embedded']['venues'][0]['state'].name
 
 
                         if (!event[name])
@@ -52,14 +52,7 @@ function Events({ setPage, user, setEvent, setEvents, setCities, dmas, dma })
                         }
                         event[name][city][date].push({name:name, url:url, venue:venue, date:date, time:time, city:city})
                 }
-                /*
-                for (let i in event['Shania Twain: Queen Of Me Tour'])
-                {
-                    alert(i)
-                }
-                
-                event['Shania Twain: Queen Of Me Tour'].map(evt => {alert(evt.city)})
-                */
+
                 setTours(tour.sort())
                 setCities(cities.sort())
                 setEvents(event)

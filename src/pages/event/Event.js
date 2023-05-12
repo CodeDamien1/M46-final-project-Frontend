@@ -1,4 +1,4 @@
-import '../App.css';
+import '../../App.css';
 
 function Event({ setPage, events, event, cities, users })
 {
