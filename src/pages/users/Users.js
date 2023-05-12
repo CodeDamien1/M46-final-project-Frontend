@@ -1,38 +1,47 @@
 import { useState } from 'react'
-import { getUsers } from '../../utils'
+import { getAllUsers } from '../../utils'
 import '../../App.css'
+import './Users.css'
 
-function Users({ setPage, setSelectedUser, user })
+function Users({ jwtToken, setPage, setSelectedUser, user })
 {
 
   const [message, setMessage] = useState()
   const [users, setUsers] = useState([])
 
-  console.log('before use effect')
 
-  const getList = async (e) => 
+  const getList  = async (e) => 
   {
-     e.preventDefault()
+    try 
+    {
 
-      setMessage()
+      e.preventDefault() // will not refresh the browser
 
-      const data = await getUsers()
+      const data = await getAllUsers(jwtToken)
 
       if (data.users)
       {
-          setUsers(data.users)
+        setUsers(data.users)
+        setPage('u')
       }
       else
       {
-          setMessage(data.message)
+        setMessage(data.message)
       }
-      
+    } 
+    catch (error) 
+    {
+      console.log('Users.js error - ', error)
+      setMessage(error)
+    }
+ 
   }
 
   function viewUser(userSelected)
   {
-    setSelectedUser(userSelected)
-    setPage('')
+    console.log('userSelected: ', userSelected)
+    setSelectedUser(userSelected.username)
+    setPage('v')
   }
 
   return (
@@ -52,7 +61,7 @@ function Users({ setPage, setSelectedUser, user })
       }
       </div>
       <div>{message}</div>
-      <div><input type="button" value="events" onClick={ () => setPage('e')} /></div>
+      <div><input type="button" value="events" className="events-button" onClick={ () => setPage('e')} /></div>
     </div>
   )
 }
