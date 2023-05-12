@@ -59,6 +59,7 @@ function App() {
     <div className="App">
       <Header setUser={setUser} setPage={setPage} user={user} />
       {
+
         user
           ? (page === 'l')
             ? <Events setPage={setPage} user={user} setEvent={setEvent} setEvents={setEvents} setCities={setCities} dma={607} />
@@ -91,6 +92,7 @@ function App() {
             </div>
 
             : <Login setUser={setUser} setPage={setPage} />
+
       }
     </div>
   )

@@ -81,16 +81,15 @@ export const registerUser = async (firstName, surname, email, locality, username
 export const getAllUsers = async (jwtToken) => {
     try {
         const response = await fetch
-            (`${process.env.REACT_APP_BASE_URL}/users/getallusers`,
-                {
-                    method: "GET",
-                    headers:
-                    {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${jwtToken}`,
-                    },
-                })
-
+        (`${process.env.REACT_APP_BASE_URL}/users/getallusers`, 
+            {method: "GET"
+            ,headers: 
+                {"Content-Type": "application/json"
+                ,Authorization: `Bearer ${jwtToken}`
+                }
+            }
+        )
+    
         const data = await response.json();
 
         if (data.errrorMessage) {
@@ -108,32 +107,41 @@ export const getAllUsers = async (jwtToken) => {
 
 }
 
-export const deleteUser = async (username) => {
-    try {
+
+export const deleteUser = async (username, jwtToken) =>
+{
+    console.log('deleteUser (utils/index.js) username: ', username, ' jwtToken: ', jwtToken)
+    try 
+    {
         const response = await fetch
-            (`${process.env.REACT_APP_BASE_URL}/users/deleteuser`,
-                {
-                    method: 'DELETE'
-                    , headers: { "Content-Type": "application/json" }
-                    , body: JSON.stringify
-                        (
-                            { "username": username }
-                        )
-                }
+        (`${process.env.REACT_APP_BASE_URL}/users/deleteuser`,
+            {method: 'DELETE'
+            ,headers: {"Content-Type": "application/json"}
+            ,Authorization: `Bearer ${jwtToken}`
+            ,body: JSON.stringify
+            (
+                {"username":username}
             )
 
-        const data = await response.json()
-
-        if (data.errorMessage) {
-            return { deleteSuccessfull: false, message: data.errorMessage }
+        const data = await response.json() 
+        
+            console.log('deleteUser (utils/index.js) - data', data)
+        if (data.errorMessage)
+        {
+            return {deleteSuccessful:false, message:data.errorMessage}
         }
-        else {
-            return { deleteSuccessfull: true, message: 'User ' + username + ' successfully deleted from the table Users' }
+        else if (data.message === 'failure')
+        {
+            return {deleteSuccessful:false, message:'Delate of User "' + username + '" failed middleware error ' + data.message}
         }
-    }
-    catch (error) {
-        console.log(error)
-        return { message: 'Delete error (index.js) - ' + error.message }
-
+        else
+        {
+            return {deleteSuccessful:true, message:'User "' + username + '" successfully deleted from the table Users'}
+        }
+    } 
+    catch (error) 
+    {
+        console.log(error)    
+        return {message:'Delete error (utils/index.js) - ' + error.message}
     }
 }
