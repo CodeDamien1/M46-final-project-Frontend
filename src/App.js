@@ -73,9 +73,10 @@ function App() {
             ?
             <div>
 
-              <button onClick={handleOpenRegisterModal}>Register</button>
+              <button onClick={handleOpenRegisterModal}>Click here to register a new account</button>
 
-              <ReactModal
+              <ReactModal 
+              setPage={setPage}
 
                 isOpen={registerModalIsOpen}
 

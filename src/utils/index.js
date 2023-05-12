@@ -41,7 +41,9 @@ export const loginUser = async (username, password) => {
 
 export const registerUser = async (firstName, surname, email, locality, username, password) => {
     try {
+        
         const response = await fetch
+        
             (`${process.env.REACT_APP_BASE_URL}/users/register`,
                 {
                     method: 'POST'
@@ -59,11 +61,12 @@ export const registerUser = async (firstName, surname, email, locality, username
                         )
                 }
             )
-
+            console.log('locality:', locality)
         const data = await response.json()
 
         if (data.errorMessage) {
             return { message: data.errorMessage, userCreated: false }
+            console.log(JSON.body)
         }
         else {
             return { message: data.message, user: data.user, userCreated: true }
