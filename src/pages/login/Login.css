@@ -1,12 +1,15 @@
-.login-button
+.login-buttons
 {
     background-color:grey;
     border:solid 2px black;
-    border-radius:2px;
+    border-radius:10px;
     color:black;
+    width:80px;
+    padding:2px;
+    margin:2px;
     cursor:pointer;
 }
-.login-button:hover
+.login-buttons:hover
 {
     background-color:black;
     border-color:grey;
