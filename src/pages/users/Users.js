@@ -37,7 +37,7 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
  
   }
 
-  function viewUser(userSelected)
+  const viewUser = (userSelected) =>
   {
     console.log('userSelected: ', userSelected)
     setSelectedUser(userSelected.username)
