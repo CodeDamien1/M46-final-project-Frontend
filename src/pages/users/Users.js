@@ -46,7 +46,7 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
 
   return (
     <div className="App">
-      <div>users     User: {user.username} </div>
+      <div>users User: {user.username} </div>
       <div>
       {
         users.length === 0
