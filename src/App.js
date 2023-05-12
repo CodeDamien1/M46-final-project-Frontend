@@ -10,7 +10,7 @@ import Users from './pages/users/Users'
 import User from './pages/user/User'
 import { authCheck, getCookie } from './common'
 
-
+ReactModal.setAppElement("#root");
 
 function App() {
 
