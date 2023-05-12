@@ -55,7 +55,7 @@ function App()
             : (page === 'u' ) 
               ? <Users jwtToken={jwt} setPage={setPage} setSelectedUser={setSelectedUser} user={user} /> 
               : (page === 'v')
-                ? <User setPage={setPage} selectedUser={selectedUser} user={user} />
+                ? <User jwtToken={jwt} setPage={setPage} setUser={setUser} selectedUser={selectedUser} user={user} />
                 : <Events setPage={setPage} user={user}  setEvent={setEvent} setCities={setCities} dma={607} />
         : (page === 'r') 
           ? <Register setPage={setPage} />

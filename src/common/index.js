@@ -59,3 +59,10 @@ export const authCheck = async (jwtToken) =>
     }
     
 }
+
+export const deleteCookie = (cookieName) => 
+{
+
+    writeCookie (cookieName, "", -1);
+    
+}
