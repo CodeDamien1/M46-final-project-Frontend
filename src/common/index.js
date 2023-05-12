@@ -31,3 +31,31 @@ export const getCookie = (cookieName) =>
        return false 
     }
 }
+
+export const authCheck = async (jwtToken) => 
+{
+    try 
+    {
+    
+        const response = await fetch
+        (`${process.env.REACT_APP_BASE_URL}/users/authcheck`, 
+            {method: "GET"
+            ,headers: 
+                {"Content-Type": "application/json"
+                ,Authorization: `Bearer ${jwtToken}`
+                }
+            }
+        )
+
+        const data = await response.json()
+    
+        console.log('Auth Check - ', data)
+    
+        return data.user.username;
+    
+    } catch (error) 
+    {
+        console.log(error);
+    }
+    
+}

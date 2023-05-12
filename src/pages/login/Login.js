@@ -47,8 +47,8 @@ function Login({ setUser, setPage })
               <input type="text" onChange={e => setPassword(e.target.value)} required />
           </label>
           <div>
-              <input type="submit" value="login" className="login-button"/>
-              <input type="button" value="register" onClick={ () => register() } />
+              <input type="submit" value="login" className="login-buttons" />
+              <input type="button" value="register" className="login-buttons" onClick={ () => register() } />
           </div>
         </div>
       </form>

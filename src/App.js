@@ -1,4 +1,4 @@
-import { useState  } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './pages/header/Header'
 import Login from './pages/login/Login'
@@ -7,6 +7,7 @@ import Events from './pages/events/Events'
 import Event from './pages/event/Event'
 import Users from './pages/users/Users'
 import User from './pages/user/User'
+import { authCheck, getCookie } from './common'
 
 function App()
 {
@@ -17,7 +18,29 @@ function App()
   const [event, setEvent] = useState()
   const [cities, setCities] = useState()
   const [selectedUser, setSelectedUser] = useState()
+  const [jwt, setJwt] = useState();
   //const [dma, setDma] = useState(607)
+
+ 
+  useEffect(() => 
+  {
+
+    let jwtoken = getCookie("jwt_token");
+    console.log(jwtoken)
+
+    if (jwtoken !== false) 
+    {
+      loginWithToken(jwtoken)
+    }
+
+  }, [])
+
+  const loginWithToken = async (jwtoken) => 
+  {
+    const user = await authCheck(jwtoken)
+    setUser({'username':user})
+    setJwt(jwtoken)
+  }
 
 
   return (
@@ -30,8 +53,10 @@ function App()
           : (page === 'e')
             ? <Event setPage={setPage} events={events} event={event} cities={cities} user={user} /> 
             : (page === 'u' ) 
-              ? <Users setPage={setPage} setSelectedUser={setSelectedUser} user={user} /> 
-              : <User setPage={setPage} selectedUser={selectedUser} user={user} />
+              ? <Users jwtToken={jwt} setPage={setPage} setSelectedUser={setSelectedUser} user={user} /> 
+              : (page === 'v')
+                ? <User setPage={setPage} selectedUser={selectedUser} user={user} />
+                : <Events setPage={setPage} user={user}  setEvent={setEvent} setCities={setCities} dma={607} />
         : (page === 'r') 
           ? <Register setPage={setPage} />
           : <Login setUser={setUser} setPage={setPage} />
