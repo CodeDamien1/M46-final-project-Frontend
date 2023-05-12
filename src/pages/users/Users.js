@@ -32,7 +32,7 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
     catch (error) 
     {
       console.log('Users.js error - ', error)
-      setMessage(error)
+      setMessage(error.toString())
     }
  
   }
@@ -44,26 +44,40 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
     setPage('v')
   }
 
+  
   return (
     <div className="App">
-      <div>users User: {user.username} </div>
+      <div>users User: {user.username}</div>
       <div>
-      {
-        users.length === 0
-        ? <form onSubmit={getList}>To get a list of users click <input type="submit" value="here" /></form>
-        : message ? <div>{message}</div>:
-          users.map
-          (user =>
-            <div>
-              <input type="button" value={user.username} onClick={(e) => viewUser(user)} />
+        {users.length === 0 ? (
+          <form onSubmit={getList}>
+            To get a list of users click
+            <input type="submit" value="here" />
+          </form>
+        ) : (
+          users.map((user) => (
+            // adding key to div to improve performance when rendering larger lists 
+            <div key={user.username}>                   
+              <input
+                type="button"
+                value={user.username}
+                onClick={() => viewUser(user)}
+              />
             </div>
-          )
-      }
+          ))
+        )}
+        {message && <div>{message}</div>}
       </div>
-      <div>{message}</div>
-      <div><input type="button" value="events" className="events-button" onClick={ () => setPage('e')} /></div>
+      <div>
+        <input
+          type="button"
+          value="events"
+          className="events-button"
+          onClick={() => setPage('e')} // onclick changed to arrow function
+        />
+      </div>
     </div>
-  )
+  );
 }
 
 export default Users
