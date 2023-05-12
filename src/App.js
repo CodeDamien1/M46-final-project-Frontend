@@ -9,7 +9,7 @@ import Users from './pages/users/Users'
 import User from './pages/user/User'
 import { authCheck, getCookie } from './common'
 
-function App()
+const App = () =>
 {
 
   const [user, setUser] = useState()
@@ -42,27 +42,67 @@ function App()
     setJwt(jwtoken)
   }
 
+  const renderPage = () => {
+    if (!user) {                        // checks the value of user and returns the appropriate component
+      return page === 'r' ? (
+        <Register setPage={setPage} />
+      ) : (
+        <Login setUser={setUser} setPage={setPage} />
+      );
+    }
+
+    switch (page) {                   // checks the value of page and returns the appropriate component
+      case 'l':
+        return (
+          <Events
+            setPage={setPage}
+            user={user}
+            setEvent={setEvent}
+            setEvents={setEvents}
+            setCities={setCities}
+            dma={607}
+          />
+        );
+      case 'e':
+        return (
+          <Event
+            setPage={setPage}
+            events={events}
+            event={event}
+            cities={cities}
+            user={user}
+          />
+        );
+      case 'u':
+        return (
+          <Users
+            jwtToken={jwt}
+            setPage={setPage}
+            setSelectedUser={setSelectedUser}
+            user={user}
+          />
+        );
+      case 'v':
+        return <User setPage={setPage} selectedUser={selectedUser} user={user} />;
+      default:
+        return (
+          <Events
+            setPage={setPage}
+            user={user}
+            setEvent={setEvent}
+            setCities={setCities}
+            dma={607}
+          />
+        );
+    }
+  };
 
   return (
     <div className="App">
       <Header setUser={setUser} setPage={setPage} user={user} />
-      {
-        user 
-        ? (page === 'l' ) 
-          ? <Events setPage={setPage} user={user} setEvent={setEvent} setEvents={setEvents} setCities={setCities} dma={607} /> 
-          : (page === 'e')
-            ? <Event setPage={setPage} events={events} event={event} cities={cities} user={user} /> 
-            : (page === 'u' ) 
-              ? <Users jwtToken={jwt} setPage={setPage} setSelectedUser={setSelectedUser} user={user} /> 
-              : (page === 'v')
-                ? <User setPage={setPage} selectedUser={selectedUser} user={user} />
-                : <Events setPage={setPage} user={user}  setEvent={setEvent} setCities={setCities} dma={607} />
-        : (page === 'r') 
-          ? <Register setPage={setPage} />
-          : <Login setUser={setUser} setPage={setPage} />
-      }
+      {renderPage()}
     </div>
-  )
+  );
 }
 
 export default App;
