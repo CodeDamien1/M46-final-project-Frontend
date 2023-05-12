@@ -83,14 +83,13 @@ export const getAllUsers = async (jwtToken) =>
     {
         const response = await fetch
         (`${process.env.REACT_APP_BASE_URL}/users/getallusers`, 
-        {
-            method: "GET",
-            headers: 
-                {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${jwtToken}`,
-                },
-        })
+            {method: "GET"
+            ,headers: 
+                {"Content-Type": "application/json"
+                ,Authorization: `Bearer ${jwtToken}`
+                }
+            }
+        )
     
         const data = await response.json();
     
@@ -112,14 +111,16 @@ export const getAllUsers = async (jwtToken) =>
     
 }
 
-export const deleteUser = async (username) =>
+export const deleteUser = async (username, jwtToken) =>
 {
+    console.log('deleteUser (utils/index.js) username: ', username, ' jwtToken: ', jwtToken)
     try 
     {
         const response = await fetch
         (`${process.env.REACT_APP_BASE_URL}/users/deleteuser`,
             {method: 'DELETE'
             ,headers: {"Content-Type": "application/json"}
+            ,Authorization: `Bearer ${jwtToken}`
             ,body: JSON.stringify
             (
                 {"username":username}
@@ -128,20 +129,24 @@ export const deleteUser = async (username) =>
         )
 
         const data = await response.json() 
-        
+            console.log('deleteUser (utils/index.js) - data', data)
         if (data.errorMessage)
         {
-            return {deleteSuccessfull:false, message:data.errorMessage}
+            return {deleteSuccessful:false, message:data.errorMessage}
+        }
+        else if (data.message === 'failure')
+        {
+            return {deleteSuccessful:false, message:'Delate of User "' + username + '" failed middleware error ' + data.message}
         }
         else
         {
-            return {deleteSuccessfull:true, message:'User ' + username + ' successfully deleted from the table Users'}
+            return {deleteSuccessful:true, message:'User "' + username + '" successfully deleted from the table Users'}
         }
     } 
     catch (error) 
     {
         console.log(error)    
-        return {message:'Delete error (index.js) - ' + error.message}
+        return {message:'Delete error (utils/index.js) - ' + error.message}
     
     }
 }
