@@ -45,7 +45,7 @@ function Register({ setPage }) {
   return (
     <div className='register-container'>
       <div className="modal-content">
-        <button onClick={() => login()}>X</button>
+        <button onClick={() => login()}>Back to Login Page</button>
         <h2>Welcome</h2>
         <form onSubmit={submitHandler}>
           <label>
