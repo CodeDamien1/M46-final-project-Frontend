@@ -66,7 +66,7 @@ export const registerUser = async (firstName, surname, email, locality, username
 
         if (data.errorMessage) {
             return { message: data.errorMessage, userCreated: false }
-            console.log(JSON.body)
+            
         }
         else {
             return { message: data.message, user: data.user, userCreated: true }
