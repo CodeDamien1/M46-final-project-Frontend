@@ -50,23 +50,17 @@ function User({ jwtToken, setPage, setUser, selectedUser, user })
 
   return (
         <div className="App">
-          <div>user     User: {user.username} </div>
+          <div className="user-title">delete user</div>
+          <div className="user-name">User: <i>{user.username} </i></div>
           <div>
-            <div><br></br><br></br>Are you sure you want to delete user "{selectedUser}" from tables User</div>
+            <div className="user-message"><br></br><br></br>Are you sure you want to delete user "{selectedUser}" from tables User?<br></br><br></br></div>
           </div>
-          <table align="center">
-            <tr>
-              <td>
-                <input type="button" value="no" onClick={ () => setPage('u')} />
-              </td>
-              <td>
-                <form onSubmit={userDelete}>
-                  <input type="submit" value="yes"  />
-                </form>
-              </td>
-            </tr>
-        </table>
-        <div>{message}</div>
+          <form onSubmit={userDelete}>
+            <input type="button" className="user-buttons" value="no" onClick={ () => setPage('u')} />
+                 
+            <input type="submit" className="user-buttons" value="yes"  />
+          </form>
+          <div>{message}</div>
         </div>
       )
 }
