@@ -1,31 +1,15 @@
 import '../../App.css';
 
-function Event({ setPage, events, event, cities, users })
+function Event({ setPage, event})
 {
 
-    function details(city)
-    {
-        let dates = 'These are the dates'
-        for (let i in events[event][city])
-        {
-            dates += i + "\n"
-        }
-
-        alert(dates)
-    }
 
   return (
     <div className="App">
-        <div>{event}</div>
-        <div>
-            {
-                cities[event].map
-                ((city, index) =>
-                {
-                    return <div><input type="button" value={city} onClick={ () => details(city) }/></div>
-                }
-            )
-            }
+        <div className="event-item">
+            <div>{event.name}</div>
+            <div>{event.city}</div>
+            <div>{event.date}</div>
         </div>
         <div><input type="button" value="events" onClick={ () => setPage('l')} /></div>
     </div>
