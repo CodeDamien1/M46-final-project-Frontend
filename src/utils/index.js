@@ -119,8 +119,10 @@ export const deleteUser = async (username, jwtToken) =>
         const response = await fetch
         (`${process.env.REACT_APP_BASE_URL}/users/deleteuser`,
             {method: 'DELETE'
-            ,headers: {"Content-Type": "application/json"}
-            ,Authorization: `Bearer ${jwtToken}`
+            ,headers: 
+                {"Content-Type": "application/json"
+                ,Authorization: `Bearer ${jwtToken}`
+                }
             ,body: JSON.stringify
             (
                 {"username":username}
