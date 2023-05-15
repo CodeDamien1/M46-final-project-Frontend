@@ -61,7 +61,7 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
       }
       </div>
       <div>{message}</div>
-      <div><input type="button" value="events" className="events-button" onClick={ () => setPage('e')} /></div>
+      <div><input type="button" value="events" className="events-button" onClick={ () => setPage('l')} /></div>
     </div>
   )
 }

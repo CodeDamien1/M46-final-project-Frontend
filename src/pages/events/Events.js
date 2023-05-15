@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import '../../App.css'
 import './Events.css'
 
-function Events({ setPage, user, setEvent, setEvents, setCities, dma })
+function Events({ setPage, user, setEvent, dma })
 {
-    const [tours, setTours] = useState([])
+    const [events, setEvents] = useState([])
 
     useEffect(() => 
     {
@@ -21,7 +21,7 @@ function Events({ setPage, user, setEvent, setEvents, setCities, dma })
                 }
                 const data = await response.json()
                 const tour = []
-                const event = []
+                const events = []
                 const cities = []
 
 
@@ -34,7 +34,7 @@ function Events({ setPage, user, setEvent, setEvents, setCities, dma })
                     let time = data['_embedded']['events'][i]['dates']['start'].localTime
                     let city = data['_embedded']['events'][i]['_embedded']['venues'][0]['city'].name
 
-
+                        /*
                         if (!event[name])
                         {
                             event[name] = []
@@ -50,12 +50,17 @@ function Events({ setPage, user, setEvent, setEvents, setCities, dma })
                         {
                             event[name][city][date] = []
                         }
-                        event[name][city][date].push({name:name, url:url, venue:venue, date:date, time:time, city:city})
-                }
+                        */
 
-                setTours(tour.sort())
-                setCities(cities.sort())
-                setEvents(event)
+                        tour.push(name)
+
+                        events.push({name:name, url:url, venue:venue, date:date, time:time, city:city})
+                }
+                
+                //setTours(tour.sort())
+                //setCities(cities.sort())
+                
+                setEvents(events)
   
             } 
             catch (error) 
@@ -75,23 +80,29 @@ function Events({ setPage, user, setEvent, setEvents, setCities, dma })
         setPage('u')
     }
 
-    function event(name)
+    function viewEvent(event)
     {
-        setEvent(name)
+        setEvent(event)
         setPage('e')
     }
 
 
   return (
     <div className="App">
-        <div>Events   User: {user.username}   <input type="button" value="users" onClick={ () => users() } /> </div>
+        <div><span className="event-title">events</span>   <span className="user-name">User: <i>{user.username}</i> </span>  <input type="button" value="users" className="user-button" onClick={ () => users() } /> </div>
 
         <div className="event-list">
             {
-                tours.map
-                ((tour, index) =>
+                events.map
+                ((event, index) =>
                     {
-                        return <div><input type="button" value={tour} onClick={ () => event(tour) }/></div>
+                        return <div className="event-item">
+                            <img src={event.url} height="10vw" width="10vw"/>
+                            <div>{event.name}</div>
+                            <div>{event.city}</div>
+                            <div>{event.date}</div>
+                            <input type="button"  value="select" className="event-button" onClick={ () => viewEvent(event) } />
+                            </div>
                     }
                 )
             }
