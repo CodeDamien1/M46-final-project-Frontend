@@ -61,15 +61,15 @@ function Register({onClose}) {
             locality
             <select onChange={(e) => {console.log('select value:', e.target.value); setLocality(e.target.value)}} required >
               <option value="null">Please select a locality</option>
-              <option value="All of United Kingdom">All of United Kingdom</option>
-              <option value="London">London</option>
-              <option value="South">South</option>
-              <option value="Midlands and Central">Midlands and Central</option>
-              <option value="Wales and North West">Wales and North West</option>
-              <option value="North and North East">North and North East</option>
-              <option value="Scotland">Scotland</option>
-              <option value="All of Ireland">All of Ireland</option>
-              <option value="Northern Ireland">Northern Ireland</option>
+              <option value="601">All of United Kingdom</option>
+              <option value="602">London</option>
+              <option value="603">South</option>
+              <option value="604">Midlands and Central</option>
+              <option value="605">Wales and North West</option>
+              <option value="606">North and North East</option>
+              <option value="607">Scotland</option>
+              <option value="608">All of Ireland</option>
+              <option value="609">Northern Ireland</option>
             </select>
           </label>
           <label>
