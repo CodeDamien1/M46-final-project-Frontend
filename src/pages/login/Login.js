@@ -30,7 +30,7 @@ function Login({ setUser, setPage }) {
 
   return (
     <div className="App">
-      <div>login</div>
+      <div>Login</div>
       <form onSubmit={userLogin}>
         <div className="data-entry">
           <label>
@@ -42,8 +42,8 @@ function Login({ setUser, setPage }) {
             <input type="text" onChange={e => setPassword(e.target.value)} required />
           </label>
           <div>
-            <input type="submit" value="login" className="login-buttons" />
-            <input type="button" value="register" className="login-buttons" onClick={() => register()} />
+            <input type="submit" value="Login" className="login-buttons" />
+            <input type="button" value="Register user" className="login-buttons" onClick={() => register()} />
           </div>
         </div>
       </form>
