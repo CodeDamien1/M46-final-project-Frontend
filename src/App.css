@@ -1,29 +1,84 @@
-.App 
-{
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+:root {
+  --clr-primary-300: #ffa458;
+  --clr-secondary-400: #bb3b0b;
+  --clr-neutral-500: #111010;
+}
+
+.App {
   text-align: center;
 }
 
-.logo
-{
-  color:green;
-  font-size:20px;
-  text-shadow:-2px -2px lightgreen;
-}
 
-.data-entry
-{
+.data-entry {
   display: flex;
   flex-direction: column;
 }
 
-.users-list
-{
+.users-list {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.users-item
-{
-  width:80px;
+.users-item {
+  width: 80px;
+}
+
+
+body::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(./img/logo-color.svg);
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
+}
+
+/* Style the header */
+.App header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+/* Style the login and register forms */
+.App form {
+  font-size: 0.8rem;
+  background: linear-gradient(to right, #ffa458, #bb3b0b);
+  filter: opacity(0.7);
+  border: 0.5px solid #ffffff;
+  border-radius: 0.2rem;
+  margin: auto;
+  max-width: 200px;
+  min-width: 200px;
+  padding: 0.5rem;
+}
+
+/* Style the buttons */
+.App button {
+  background: linear-gradient(to right, #ffa458, #bb3b0b);
+  border-radius: 0.5rem;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.2s ease-in-out;
+
+}
+
+.App button:hover {
+  background: linear-gradient(to right, #bb3b0b, #ffa458);
 }

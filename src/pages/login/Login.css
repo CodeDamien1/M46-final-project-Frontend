@@ -1,0 +1,41 @@
+.login-buttons {
+    background-color: grey;
+    border-radius: 10px;
+    color: black;
+    width: 80px;
+    padding: 2px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.login-buttons:hover {
+    background-color: #bb3b0b;
+    scale: 1.05;
+}
+
+label {
+    color: white;
+    padding: 0.5rem;
+
+}
+
+input.login-buttons {
+    color: white;
+    background-color: none;
+    margin-top: 0.25rem;
+    border: 0.5px solid white;
+}
+
+input.delete-button {
+    color: white;
+    background-color: #bb3b0b;
+    margin-top: 0.25rem;
+    border: 0.5px solid white;
+}
+
+input {
+    font-size: 0.6rem;
+    color: white;
+    background-color: #ffa458;
+    border: 0.5px solid white;
+}

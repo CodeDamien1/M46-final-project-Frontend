@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import '../App.css';
+import '../../App.css'
+import './Events.css'
 
-function Events({ setPage, user, setEvent, setEvents, setCities, dmas, dma })
+function Events({ setPage, user, setEvent, dma })
 {
-    const [tours, setTours] = useState([])
+    const [events, setEvents] = useState([])
 
     useEffect(() => 
     {
@@ -12,8 +13,7 @@ function Events({ setPage, user, setEvent, setEvents, setCities, dmas, dma })
 
             try 
             {
-                let response = await fetch('https://app.ticketmaster.com/discovery/v2/events.json?&dmaId='+dma+'&apikey=n2Y9JJ9fQzEOez9pLe5PNoxrHWhlE3tx')
-                //let response = await fetch('https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=605&apikey=cAnBaAqHpdzdMJ5O67XOv52RdwJpNn1G')
+                let response = await fetch(`${process.env.REACT_APP_API_URL}${dma}${process.env.REACT_APP_API_KEY}`)
   
                 if (!response.ok) 
                 {
@@ -21,7 +21,7 @@ function Events({ setPage, user, setEvent, setEvents, setCities, dmas, dma })
                 }
                 const data = await response.json()
                 const tour = []
-                const event = []
+                const events = []
                 const cities = []
 
 
@@ -33,9 +33,8 @@ function Events({ setPage, user, setEvent, setEvents, setCities, dmas, dma })
                     let date = data['_embedded']['events'][i]['dates']['start'].localDate
                     let time = data['_embedded']['events'][i]['dates']['start'].localTime
                     let city = data['_embedded']['events'][i]['_embedded']['venues'][0]['city'].name
-                    //let state = data['_embedded']['events'][i]['_embedded']['venues'][0]['state'].name
 
-
+                        /*
                         if (!event[name])
                         {
                             event[name] = []
@@ -51,19 +50,17 @@ function Events({ setPage, user, setEvent, setEvents, setCities, dmas, dma })
                         {
                             event[name][city][date] = []
                         }
-                        event[name][city][date].push({name:name, url:url, venue:venue, date:date, time:time, city:city})
-                }
-                /*
-                for (let i in event['Shania Twain: Queen Of Me Tour'])
-                {
-                    alert(i)
+                        */
+
+                        tour.push(name)
+
+                        events.push({name:name, url:url, venue:venue, date:date, time:time, city:city})
                 }
                 
-                event['Shania Twain: Queen Of Me Tour'].map(evt => {alert(evt.city)})
-                */
-                setTours(tour.sort())
-                setCities(cities.sort())
-                setEvents(event)
+                //setTours(tour.sort())
+                //setCities(cities.sort())
+                
+                setEvents(events)
   
             } 
             catch (error) 
@@ -74,6 +71,7 @@ function Events({ setPage, user, setEvent, setEvents, setCities, dmas, dma })
 
 
         fetchData()
+        //eslint-disable-next-line
       }, [])
 
 
@@ -82,23 +80,29 @@ function Events({ setPage, user, setEvent, setEvents, setCities, dmas, dma })
         setPage('u')
     }
 
-    function event(name)
+    function viewEvent(event)
     {
-        setEvent(name)
+        setEvent(event)
         setPage('e')
     }
 
 
   return (
     <div className="App">
-        <div>Events   User: {user.username}   <input type="button" value="users" onClick={ () => users() } /> </div>
+        <div><span className="event-title">events</span>   <span className="user-name">User: <i>{user.username}</i> </span>  <input type="button" value="users" className="user-button" onClick={ () => users() } /> </div>
 
         <div className="event-list">
             {
-                tours.map
-                ((tour, index) =>
+                events.map
+                ((event, index) =>
                     {
-                        return <div><input type="button" value={tour} onClick={ () => event(tour) }/></div>
+                        return <div className="event-item">
+                            <img src={event.url} height="10vw" width="10vw"/>
+                            <div>{event.name}</div>
+                            <div>{event.city}</div>
+                            <div>{event.date}</div>
+                            <input type="button"  value="select" className="event-button" onClick={ () => viewEvent(event) } />
+                            </div>
                     }
                 )
             }
