@@ -114,22 +114,24 @@ export const deleteUser = async (username, jwtToken) => {
     console.log('deleteUser (utils/index.js) username: ', username, ' jwtToken: ', jwtToken)
     try {
         const response = await fetch
-            (`${process.env.REACT_APP_BASE_URL}/users/deleteuser`,
-                {
-                    method: 'DELETE'
-                    , headers: { "Content-Type": "application/json" }
-                    , Authorization: `Bearer ${jwtToken}`
-                    , body: JSON.stringify
-                        (
-                            { "username": username }
-                        )
-                })
+        (`${process.env.REACT_APP_BASE_URL}/users/deleteuser`,
+            {method: 'DELETE'
+            ,headers: 
+                {"Content-Type": "application/json"
+                ,Authorization: `Bearer ${jwtToken}`
+                }
+            ,body: JSON.stringify
+              (
+                {"username":username}
+              )
+            }
+        )
 
-        const data = await response.json()
-
-        console.log('deleteUser (utils/index.js) - data', data)
-        if (data.errorMessage) {
-            return { deleteSuccessful: false, message: data.errorMessage }
+        const data = await response.json() 
+            console.log('deleteUser (utils/index.js) - data', data)
+        if (data.errorMessage)
+        {
+            return {deleteSuccessful:false, message:data.errorMessage}
         }
         else if (data.message === 'failure') {
             return { deleteSuccessful: false, message: 'Delate of User "' + username + '" failed middleware error ' + data.message }

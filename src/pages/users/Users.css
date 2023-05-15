@@ -1,17 +1,43 @@
 .events-button
 {
-    background-color:grey;
-    border:solid 2px black;
+    background-color:#BA3B0A;
+    border:solid 2px #FFA458;
     border-radius:10px;
-    color:black;
-    width:80px;
+    color:#FFA458;
+    font-size:2vw;
+    width:10vw;
     padding:2px;
-    margin:2px;
+    margin:3px;
     cursor:pointer;
 }
 .events-button:hover
 {
-    background-color:black;
-    border-color:grey;
-    color:grey;
+    background-color:#FFA458;
+    border-color:#BA3B0A;
+    color:#BA3B0A;
+}
+
+.users-title
+{
+    color:#FFA458;
+    font-size:2vw;
+}
+
+.login-user-name
+{
+    color:#FFA458;
+    font-size:2vw;
+}
+
+.list-user-name
+{
+    background-color:transparent;
+    border:none;
+    font-size:2vw;
+    width:15vw;
+    cursor:pointer;
+}
+.list-user-name:hover
+{
+    color:#BA3B0A;
 }
