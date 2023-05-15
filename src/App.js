@@ -8,6 +8,8 @@ import Events from './pages/events/Events'
 import Event from './pages/event/Event'
 import Users from './pages/users/Users'
 import User from './pages/user/User'
+import UserUpdate from './pages/userupdate/UserUpdate'
+import UserDelete from './pages/userdelete/UserDelete'
 import { authCheck, getCookie } from './common'
 
 ReactModal.setAppElement("#root");
@@ -68,8 +70,12 @@ function App() {
               : (page === 'u')
                 ? <Users jwtToken={jwt} setPage={setPage} setSelectedUser={setSelectedUser} user={user} />
                 : (page === 'v')
-                  ? <User  jwtToken={jwt} setPage={setPage} selectedUser={selectedUser} user={user} />
-                  : <Events setPage={setPage} user={user} setEvent={setEvent} setCities={setCities} dma={607} />
+                  ? <User jwtToken={jwt} setPage={setPage} selectedUser={selectedUser} user={user} />
+                  :(page == 't')
+                    ? <UserUpdate jwtToken={jwt} setPage={setPage} selectedUser={selectedUser} user={user} />
+                    : (page == 'd')
+                      ? <UserDelete jwtToken={jwt} selectedUser={selectedUser} setUser={setUser} setPage={setPage} user={user} />
+                      : <Events setPage={setPage} user={user} setEvent={setEvent} setCities={setCities} dma={607} />
           : (page === 'r')
             ?
             <div>

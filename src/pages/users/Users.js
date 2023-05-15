@@ -40,28 +40,28 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
   function viewUser(userSelected)
   {
     console.log('userSelected: ', userSelected)
-    setSelectedUser(userSelected.username)
+    setSelectedUser(userSelected)
     setPage('v')
   }
 
   return (
     <div className="App">
-      <div><span className="users-title"> users</span><span className="login-user-name">    User: <i>{user.username}</i> </span></div>
+      <div className="users-title"> users</div>
       <div>
       {
         users.length === 0
-        ? <form onSubmit={getList}>To get a list of users click <input type="submit" value="here" /></form>
+        ? <form onSubmit={getList}><strong>To get a list of users click </strong><input type="submit" value="here" className="users-here" /></form>
         : message ? <div>{message}</div>:
           users.map
           (user =>
             <div>
-              <input type="button" className="list-user-nameadd ." value={user.username} onClick={(e) => viewUser(user)} />
+              <input type="button" value={user.username} className="list-user-name" onClick={(e) => viewUser(user)} />
             </div>
           )
       }
       </div>
       <div>{message}</div>
-      <div><input type="button" value="events" className="events-button" onClick={ () => setPage('e')} /></div>
+      <div><input type="button" value="events" className="events-button" onClick={ () => setPage('l')} /></div>
     </div>
   )
 }
