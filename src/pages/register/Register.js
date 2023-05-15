@@ -11,7 +11,7 @@ function Register({onClose}) {
   const [password, setPassword] = useState();
   const [message, setMessage] = useState();
 
-//issue with setPage
+  //issue with setPage
 
 
   const submitHandler = async (e) => {
@@ -32,7 +32,7 @@ function Register({onClose}) {
     if (data.userCreated) {
       console.log('user created');
       setMessage('Success! User created.');
-  
+
     } else {
       console.log('user not created message ' + data.message);
       setMessage(data.message);
@@ -42,8 +42,10 @@ function Register({onClose}) {
   return (
     <div className='register-container'>
       <div className="modal-content">
+
         <button onClick={onClose} >Close</button>
-        <h2> Click here to Register a new account</h2>
+        <h2>Welcome</h2>
+
         <form onSubmit={submitHandler}>
           <label>
             firstName:
@@ -59,7 +61,7 @@ function Register({onClose}) {
           </label>
           <label>
             locality
-            <select onChange={(e) => {console.log('select value:', e.target.value); setLocality(e.target.value)}} required >
+            <select onChange={(e) => { console.log('select value:', e.target.value); setLocality(e.target.value) }} required >
               <option value="null">Please select a locality</option>
               <option value="601">All of United Kingdom</option>
               <option value="602">London</option>

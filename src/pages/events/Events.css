@@ -1,0 +1,59 @@
+.event-title
+{
+    font-size:5vh;
+    color:#FFA458;
+}
+
+.user-name
+{
+    font-size:3vh;
+    color:#FFA458;
+    width:20vw;
+}
+.user-button
+{
+    background-color:#BA3B0A;
+    border-radius:1vw;
+    font-size:3vh;
+    width:6vw;
+    cursor:pointer;   
+}
+.user-button:hover
+{
+    background-color: #FFA458;
+    border-color:#BA3B0A;
+    color:#BA3B0A;
+}
+
+.event-list
+{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+}
+
+.event-item
+{
+    background-color: #FFA458;
+    border:solid 2px #BA3B0A;
+    border-radius:2vw;
+    margin:1vw;
+    width:15vw;
+    height:15vw;
+}
+
+.event-button
+{
+    background-color:#BA3B0A;
+    border-radius:1vw;
+    font-size:3vh;
+    width:6vw;
+    cursor:pointer;
+}
+
+.event-button:hover
+{
+    background-color: #FFA458;
+    border-color:#BA3B0A;
+    color:#BA3B0A;
+}
