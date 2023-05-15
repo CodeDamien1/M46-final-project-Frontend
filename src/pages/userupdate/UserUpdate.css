@@ -1,28 +1,4 @@
-.user-title
-{
-    font-size:5vh;
-    color:#FFA458;
-}
-
-.user-page
-{
-    font-size:3vh;
-    color:#FFA458; 
-}
-
-.user-name
-{
-    font-size:3vh;
-    color:#FFA458;
-}
-
-.user-message
-{
-    font-size:3vh;
-    color:#FFA458;
-}
-
-.user-buttons
+.user-update-buttons
 {
     background-color:#BA3B0A;
     border:solid 2px #FFA458;
@@ -34,7 +10,7 @@
     margin:3px;
     cursor:pointer;
 }
-.user-buttons:hover
+.user-update-buttons:hover
 {
     background-color:#FFA458;
     border-color:#BA3B0A;

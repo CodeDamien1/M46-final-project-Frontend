@@ -2,7 +2,7 @@
 {
     background-color:#BA3B0A;
     border:solid 2px #FFA458;
-    border-radius:10px;
+    border-radius:5vw;
     color:#FFA458;
     font-size:2vw;
     width:10vw;
@@ -33,11 +33,33 @@
 {
     background-color:transparent;
     border:none;
+    color:#BA3B0A;
     font-size:2vw;
-    width:15vw;
+    width:10vw;
+    padding:2px;
+    margin:3px;
     cursor:pointer;
 }
 .list-user-name:hover
 {
+    color:#FFA458;
+}
+
+.users-here
+{
+    background-color:#BA3B0A;
+    border:solid 2px #FFA458;
+    border-radius:5vw;
+    color:#FFA458;
+    font-size:2vw;
+    width:10vw;
+    padding:2px;
+    margin:3px;
+    cursor:pointer;
+}
+.users-here:hover
+{
+    background-color:#FFA458;
+    border-color:#BA3B0A;
     color:#BA3B0A;
 }
