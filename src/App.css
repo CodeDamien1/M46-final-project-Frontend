@@ -68,17 +68,19 @@ body::before {
 
 /* Style the buttons */
 .App button {
+  min-width: 18rem;
   background: linear-gradient(to right, #ffa458, #bb3b0b);
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   color: #fff;
   cursor: pointer;
   font-size: 1rem;
   margin: 0.5rem 0;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
   transition: background-color 0.2s ease-in-out;
 
 }
 
 .App button:hover {
   background: linear-gradient(to right, #bb3b0b, #ffa458);
+  scale: 1.05;
 }
