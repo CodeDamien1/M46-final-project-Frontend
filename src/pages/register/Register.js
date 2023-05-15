@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { registerUser } from "../../utils";
-import '../../App.css';
+import './Register.css';
 
-function Register({ setPage }) {
+function Register({onClose}) {
   const [firstName, setFirstName] = useState();
   const [surname, setSurname] = useState();
   const [email, setEmail] = useState();
@@ -11,11 +11,8 @@ function Register({ setPage }) {
   const [password, setPassword] = useState();
   const [message, setMessage] = useState();
 
-//issue with setPage
+  //issue with setPage
 
-  function login() {
-    setPage();
-  }
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -35,7 +32,7 @@ function Register({ setPage }) {
     if (data.userCreated) {
       console.log('user created');
       setMessage('Success! User created.');
-  
+
     } else {
       console.log('user not created message ' + data.message);
       setMessage(data.message);
@@ -45,8 +42,11 @@ function Register({ setPage }) {
   return (
     <div className='register-container'>
       <div className="modal-content">
-        <button onClick={() => login()}>Close</button>
-        <h2> Click here to Register a new account</h2>
+
+
+        <button onClick={onClose} >Close</button>
+        <h2>Welcome</h2>
+
         <form onSubmit={submitHandler}>
           <label>
             firstName:
@@ -62,17 +62,17 @@ function Register({ setPage }) {
           </label>
           <label>
             locality
-            <select onChange={(e) => {console.log('select value:', e.target.value); setLocality(e.target.value)}} required >
+            <select onChange={(e) => { console.log('select value:', e.target.value); setLocality(e.target.value) }} required >
               <option value="null">Please select a locality</option>
-              <option value="All of United Kingdom">All of United Kingdom</option>
-              <option value="London">London</option>
-              <option value="South">South</option>
-              <option value="Midlands and Central">Midlands and Central</option>
-              <option value="Wales and North West">Wales and North West</option>
-              <option value="North and North East">North and North East</option>
-              <option value="Scotland">Scotland</option>
-              <option value="All of Ireland">All of Ireland</option>
-              <option value="Northern Ireland">Northern Ireland</option>
+              <option value="601">All of United Kingdom</option>
+              <option value="602">London</option>
+              <option value="603">South</option>
+              <option value="604">Midlands and Central</option>
+              <option value="605">Wales and North West</option>
+              <option value="606">North and North East</option>
+              <option value="607">Scotland</option>
+              <option value="608">All of Ireland</option>
+              <option value="609">Northern Ireland</option>
             </select>
           </label>
           <label>

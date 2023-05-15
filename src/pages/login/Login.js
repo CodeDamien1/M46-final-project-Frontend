@@ -3,7 +3,7 @@ import { loginUser } from '../../utils'
 import '../../App.css'
 import './Login.css'
 
-function Login({ setUser, setPage }) {
+function Login({ setUser, setPage, handleOpenRegisterModal }) {
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
   const [message, setMessage] = useState()
@@ -23,14 +23,9 @@ function Login({ setUser, setPage }) {
     }
   }
 
-
-  function register() {
-    setPage('r')
-  }
-
   return (
     <div className="App">
-      <div>login</div>
+      <div>Login</div>
       <form onSubmit={userLogin}>
         <div className="data-entry">
           <label>
@@ -42,8 +37,10 @@ function Login({ setUser, setPage }) {
             <input type="text" onChange={e => setPassword(e.target.value)} required />
           </label>
           <div>
+
             <input type="submit" value="login" className="login-buttons" />
-            <input type="button" value="register" className="login-buttons" onClick={() => register()} />
+            <input type="button" value="register" className="login-buttons" onClick={handleOpenRegisterModal} />
+
           </div>
         </div>
       </form>
@@ -52,4 +49,4 @@ function Login({ setUser, setPage }) {
   )
 }
 
-export default Login
+export default Login;

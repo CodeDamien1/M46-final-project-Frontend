@@ -22,32 +22,23 @@ function App() {
   const [event, setEvent] = useState()
   const [cities, setCities] = useState()
   const [selectedUser, setSelectedUser] = useState()
-  const [registerModalIsOpen, setRegisterModalIsOpen] = useState(false);
   const [jwt, setJwt] = useState();
-  //const [dma, setDma] = useState(607)
 
   const handleOpenRegisterModal = () => {
-
-    setRegisterModalIsOpen(true);
-
+    setPage('r');
   };
 
-
   const handleCloseRegisterModal = () => {
-
-    setRegisterModalIsOpen(false);
-
+    setPage('l');
   };
 
   useEffect(() => {
-
     let jwtoken = getCookie("jwt_token");
     console.log(jwtoken)
 
     if (jwtoken !== false) {
       loginWithToken(jwtoken)
     }
-
   }, [])
 
   const loginWithToken = async (jwtoken) => {
@@ -56,12 +47,10 @@ function App() {
     setJwt(jwtoken)
   }
 
-
   return (
     <div className="App">
       <Header setUser={setUser} setPage={setPage} user={user} />
       {
-
         user
           ? (page === 'l')
             ? <Events setPage={setPage} user={user} setEvent={setEvent} setEvents={setEvents} setCities={setCities} dma={607} />
@@ -76,30 +65,14 @@ function App() {
                     : (page == 'd')
                       ? <UserDelete jwtToken={jwt} selectedUser={selectedUser} setUser={setUser} setPage={setPage} user={user} />
                       : <Events setPage={setPage} user={user} setEvent={setEvent} setCities={setCities} dma={607} />
-          : (page === 'r')
-            ?
-            <div>
-
-              <button onClick={handleOpenRegisterModal}>Click here to register a new account</button>
-
-              <ReactModal 
-              setPage={setPage}
-
-                isOpen={registerModalIsOpen}
-
-                onRequestClose={handleCloseRegisterModal}
-
-              >
-
-                <Register />
-
-              </ReactModal>
-
-            </div>
-
-            : <Login setUser={setUser} setPage={setPage} />
-
+        : <Login setUser={setUser} setPage={setPage} handleOpenRegisterModal={handleOpenRegisterModal} />
       }
+      <ReactModal 
+        isOpen={page === 'r'}
+        onRequestClose={handleCloseRegisterModal}
+      >
+        <Register onClose={handleCloseRegisterModal} />
+      </ReactModal>
     </div>
   )
 }
