@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { registerUser } from "../../utils";
-import '../../App.css';
+import './Register.css';
 
 function Register({ setPage }) {
   const [firstName, setFirstName] = useState();
@@ -45,7 +45,7 @@ function Register({ setPage }) {
   return (
     <div className='register-container'>
       <div className="modal-content">
-        <button onClick={() => login()}>Close</button>
+        <button onClick={() => login()}>X</button>
         <h2>Welcome</h2>
         <form onSubmit={submitHandler}>
           <label>
