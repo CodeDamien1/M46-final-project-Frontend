@@ -46,7 +46,7 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
 
   return (
     <div className="App">
-      <div>users     User: {user.username} </div>
+      <div><span className="users-title"> users</span><span className="login-user-name">    User: <i>{user.username}</i> </span></div>
       <div>
       {
         users.length === 0
@@ -55,7 +55,7 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
           users.map
           (user =>
             <div>
-              <input type="button" value={user.username} onClick={(e) => viewUser(user)} />
+              <input type="button" className="list-user-nameadd ." value={user.username} onClick={(e) => viewUser(user)} />
             </div>
           )
       }
