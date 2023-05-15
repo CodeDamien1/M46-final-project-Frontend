@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { registerUser } from "../../utils";
 import '../../App.css';
 
-function Register({ setPage }) {
+function Register({onClose}) {
   const [firstName, setFirstName] = useState();
   const [surname, setSurname] = useState();
   const [email, setEmail] = useState();
@@ -13,9 +13,6 @@ function Register({ setPage }) {
 
 //issue with setPage
 
-  function login() {
-    setPage();
-  }
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -45,7 +42,7 @@ function Register({ setPage }) {
   return (
     <div className='register-container'>
       <div className="modal-content">
-        <button onClick={() => login()}>Close</button>
+        <button onClick={onClose} >Close</button>
         <h2> Click here to Register a new account</h2>
         <form onSubmit={submitHandler}>
           <label>
