@@ -57,3 +57,21 @@
     border-color:#BA3B0A;
     color:#BA3B0A;
 }
+
+.event-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    padding: 10px;
+  }
+  
+  .event-image {
+    width: 16vh;
+    height: 16vh;
+    object-fit: contain;
+  }
+  
+  .event-details {
+    display: flex;
+    flex-direction: column;
+  }
