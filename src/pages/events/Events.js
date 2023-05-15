@@ -34,6 +34,11 @@ function Events({ setPage, user, setEvent, dma })
                     let time = data['_embedded']['events'][i]['dates']['start'].localTime
                     let city = data['_embedded']['events'][i]['_embedded']['venues'][0]['city'].name
 
+                    // get images from ticketmaster img api 
+                    const imgResponse = fetch(`https://app.ticketmaster.com/discovery/v2/events/images.json?apikey=${process.env.REACT_APP_API_KEY}`)
+                    const imgData = await imgResponse.json()
+                    console.log(imgData)
+                    const imgUrl = imgData['_embedded']['images'][0].url
                         /*
                         if (!event[name])
                         {
@@ -54,7 +59,7 @@ function Events({ setPage, user, setEvent, dma })
 
                         tour.push(name)
 
-                        events.push({name:name, url:url, venue:venue, date:date, time:time, city:city})
+                        events.push({name:name, url:url, venue:venue, date:date, time:time, city:city, imgUrl:imgUrl})
                 }
                 
                 //setTours(tour.sort())
@@ -97,11 +102,16 @@ function Events({ setPage, user, setEvent, dma })
                 ((event, index) =>
                     {
                         return <div className="event-item">
-                            <img src={event.url} height="10vw" width="10vw"/>
+                            <img src={event.url} alt={event.name} height="10vw" width="10vw"/>
                             <div>{event.name}</div>
                             <div>{event.city}</div>
                             <div>{event.date}</div>
-                            <input type="button"  value="select" className="event-button" onClick={ () => viewEvent(event) } />
+                            <input 
+                                type="button"  
+                                value="select" 
+                                className="event-button" 
+                                onClick={ () => viewEvent(event) } 
+                            />
                             </div>
                     }
                 )
