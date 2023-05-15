@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { registerUser } from "../../utils";
-import '../../App.css';
+import './Register.css';
 
 function Register({onClose}) {
   const [firstName, setFirstName] = useState();
@@ -42,6 +42,7 @@ function Register({onClose}) {
   return (
     <div className='register-container'>
       <div className="modal-content">
+
 
         <button onClick={onClose} >Close</button>
         <h2>Welcome</h2>
