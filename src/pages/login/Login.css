@@ -5,11 +5,6 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-:root {
-    --clr-primary-300: #ffa458;
-    --clr-secondary-400: #bb3b0b;
-    --clr-neutral-500: #111010;
-}
 
 .login-buttons {
     background: linear-gradient(to right, #ffa458, #bb3b0b);
