@@ -11,30 +11,23 @@ function UserUpdate({ jwtToken, setPage, selectedUser })
     const [email, setEmail] = useState(selectedUser.email)
     const [locality, setLocality] = useState()
     const [message, setMessage] = useState()
-    /*
+    
     const prev = 
         {fname:selectedUser.firstName
         ,sname:selectedUser.surname
         ,email:selectedUser.email
         ,locality:selectedUser.locality
         }
-    
-    console.log('UserUpdate prev - ', prev)
-        */
+        
     const dmas = getDmas('uk')
 
-
-    const userUpdatee = async (e) =>
+    const userUpdate = async (e) =>
     {
-        console.log('userUpdatee')
         e.preventDefault() // will not refresh the browser
-
-        /*
+       
         try 
         {
-    
             const data = {fname:'', sname:'', email:'', locality:'', message:''}
-            console.log('UserUpdate.js fname: ', fname )
             
             if (fname !== prev.fname)
             {
@@ -62,10 +55,9 @@ function UserUpdate({ jwtToken, setPage, selectedUser })
                 data.locality = await updateUser(jwtToken, 'locality', locality, selectedUser.username)
                 console.log('UserUpdate.js locality data: ', data.locality.message)
                 data.message = data.locality.message
-            }
-            //const data = await updateUser(jwtToken)    
+            }    
            
-            setPage('v')
+            setPage('u')
 
         } 
         catch (error) 
@@ -74,8 +66,6 @@ function UserUpdate({ jwtToken, setPage, selectedUser })
             setMessage(error)
             setPage('t')
         }
-        */
-        setPage('v')
     }
 
     return (
@@ -117,7 +107,14 @@ function UserUpdate({ jwtToken, setPage, selectedUser })
                             dmas.map
                             ((dma, index) => 
                                 {
-                                    return <option value={dma.value}>{dma.label}</option>             
+                                    if (dma.value === selectedUser.locality)
+                                    {
+                                        return <option value={dma.value} selected>{dma.label}</option>
+                                    }
+                                    else
+                                    {
+                                    return <option value={dma.value}>{dma.label}</option>
+                                    }
                                 }
                             )
                         }
@@ -125,13 +122,11 @@ function UserUpdate({ jwtToken, setPage, selectedUser })
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        
-                        <input type="button" className="user-update-button" value="view" onClick={ () => setPage('v') } />
-                        <input type="button" className="user-update-button" value="users" onClick={ () => setPage('u') } />
-                        
-                        <form onChange={userUpdatee} className="user-update-buttons" >
-                            <button className="user-update-button">update</button>
+                    <td>   
+                        <form onSubmit={userUpdate} className="user-update-buttons" >
+                            <input type="button" className="user-update-button" value="users" onClick={ () => setPage('u') } />
+                            <input type="button" className="user-update-button" value="events" onClick={ () => setPage('l') } />
+                            <input type="submit" className="user-update-button" value="update" />
                         </form>
                     </td>
                 </tr>

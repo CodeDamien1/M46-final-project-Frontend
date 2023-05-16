@@ -113,11 +113,10 @@ export const getAllUsers = async (jwtToken) => {
 
 export const updateUser = async (jwtToken, key, value, username) => 
 {
-    console.log('updateUser (tiels/index.js username - ', username)
     try {
         const response = await fetch
             (`${process.env.REACT_APP_BASE_URL}/users/updateuser`,
-                {method: "GET"
+                {method: "PUT"
                 ,headers:
                     {"Content-Type": "application/json"
                     ,Authorization: `Bearer ${jwtToken}`
@@ -126,7 +125,7 @@ export const updateUser = async (jwtToken, key, value, username) =>
                     (
                         {"updateKey": key
                         ,"updateValue": value
-                        ,"where": username
+                        ,"username": username
                         }
                     )
                 }
@@ -137,10 +136,6 @@ export const updateUser = async (jwtToken, key, value, username) =>
         if (data.errorMessage) 
         {
             return { message: 'Update Users error (utils/index.js) - ' + data.errorMessage }
-        }
-        else if (data.message === 'failure') 
-        {
-            return { message: 'Update of User "' + username + '" failed middleware error ' + data.message }
         }
         else 
         {
@@ -174,7 +169,7 @@ export const deleteUser = async (username, jwtToken) => {
         )
 
         const data = await response.json() 
-            console.log('deleteUser (utils/index.js) - data', data)
+        console.log('deleteUser (utils/index.js) - data', data)
         if (data.errorMessage)
         {
             return {deleteSuccessful:false, message:data.errorMessage}
