@@ -6,14 +6,31 @@
 
 .user-page
 {
+    display:flex;
+    flex-direction: column;
     font-size:3vh;
     color:#FFA458; 
 }
 
-.user-name
+.user-line
 {
-    font-size:3vh;
-    color:#FFA458;
+    display:flex;
+    justify-content: center;
+    font-size:2vw;
+}
+
+.user-label
+{
+    color:#BA3B0A;
+    width:20vw;
+    text-align:left;
+}
+
+.user-data
+{
+    color:white;
+    width:10vw;
+    text-align:left;
 }
 
 .user-message
