@@ -47,6 +47,8 @@ function App() {
     setJwt(jwtoken)
   }
 
+  console.log('page:- ', page)
+
   return (
     <div className="App">
       <Header setUser={setUser} setPage={setPage} user={user} />
@@ -60,9 +62,9 @@ function App() {
                 ? <Users jwtToken={jwt} setPage={setPage} setSelectedUser={setSelectedUser} user={user} />
                 : (page === 'v')
                   ? <User jwtToken={jwt} setPage={setPage} selectedUser={selectedUser} user={user} />
-                  :(page == 't')
+                  :(page === 't')
                     ? <UserUpdate jwtToken={jwt} setPage={setPage} selectedUser={selectedUser} user={user} />
-                    : (page == 'd')
+                    : (page === 'd')
                       ? <UserDelete jwtToken={jwt} selectedUser={selectedUser} setUser={setUser} setPage={setPage} user={user} />
                       : <Events setPage={setPage} user={user} setEvent={setEvent} setCities={setCities} dma={607} />
         : <Login setUser={setUser} setPage={setPage} handleOpenRegisterModal={handleOpenRegisterModal} />

@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import { deleteUser } from '../../utils'
-import { deleteCookie } from '../../common'
 import '../../App.js'
 import './User.css'
 
@@ -11,7 +9,7 @@ function User({ jwtToken, setPage, setUser, selectedUser, user })
   function updateUser()
   {
     console.log('User.js updateuser')
-    if (selectedUser.username != user.username)
+    if (selectedUser.username !== user.username)
     {
       setMessage('cannot update user')
     }
@@ -24,7 +22,7 @@ function User({ jwtToken, setPage, setUser, selectedUser, user })
   function deleteUser()
   {
     console.log('User.js deleteuser')
-    if (selectedUser.username != user.username)
+    if (selectedUser.username !== user.username)
     {
       setMessage('cannot delete user')
     }
@@ -35,37 +33,36 @@ function User({ jwtToken, setPage, setUser, selectedUser, user })
   }
 
   return (
-        <div className="App user-page">
+        <div className="App">
           <div className="users-title">view users details</div>
+          <div className="user-page">
+            <div className="user-line">
+              <div className="user-label">First Name:</div>
+              <div className="user-data"><i>{selectedUser.firstName}</i></div>
+            </div>
           <div>
-            <label>
-              First Name:
-              <i>{selectedUser.firstName}</i>
-            </label>
+            <div className="user-line">
+              <div className="user-label">Surame:</div>
+              <div className="user-data"><i>{selectedUser.surname}</i></div>
+            </div>
           </div>
           <div>
-            <label>
-              Surname:
-              <i>{selectedUser.surname}</i>
-            </label>
+            <div className="user-line">
+              <div className="user-label">Email:</div>
+              <div className="user-data"><i>{selectedUser.email}</i></div>
+            </div>
           </div>
           <div>
-            <label>
-              Email:
-              <i>{selectedUser.email}</i>
-            </label>
+            <div className="user-line">
+              <div className="user-label">Locality:</div>
+              <div className="user-data"><i>{selectedUser.locality}</i></div>
+            </div>
           </div>
           <div>
-            <label>
-              Locality:
-              <i>{selectedUser.locality}</i>
-            </label>
-          </div>
-          <div>
-            <label>
-              Username:
-              <i>{selectedUser.username}</i>
-            </label>
+            <div className="user-line">
+              <div className="user-label">Username:</div>
+              <div className="user-data"><i>{selectedUser.username}</i></div>
+            </div>
           </div>
 
           <div>
@@ -74,6 +71,7 @@ function User({ jwtToken, setPage, setUser, selectedUser, user })
             <input type="button" value="delete" className="user-buttons" onClick = {() => deleteUser(selectedUser)} />
           </div>
           <div>{message}</div>
+          </div>
         </div>
       )
 }

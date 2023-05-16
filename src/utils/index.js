@@ -12,9 +12,8 @@ export const loginUser = async (username, password) => {
                     , headers: { "Content-Type": "application/json" }
                     , body: JSON.stringify
                         (
-                            {
-                                "username": username
-                                , "password": password
+                            {"username": username
+                            ,"password": password
                             }
                         )
                 }
@@ -25,17 +24,20 @@ export const loginUser = async (username, password) => {
 
         writeCookie('jwt_token', data.user.token, 7)
 
-        if (data.error) {
+        if (data.error) 
+        {
             return { message: data.error, loginValid: false }
         }
-        else {
+        else 
+        {
             return { user: data.user, loginValid: true }
         }
 
     }
-    catch (error) {
+    catch (error) 
+    {
         console.log('Login User: ' + error)
-        return { message: 'Login error (index.js) - ' + error, loginValid: false }
+        return { message: 'Login error (utils/index.js) - ' + error, loginValid: false }
     }
 }
 
@@ -50,13 +52,12 @@ export const registerUser = async (firstName, surname, email, locality, username
                     , headers: { "Content-Type": "application/json" }
                     , body: JSON.stringify
                         (
-                            {
-                                "firstName": firstName,
-                                "surname": surname,
-                                "email": email,
-                                "locality": locality,
-                                "username": username,
-                                "password": password
+                            {"firstName": firstName
+                            ,"surname": surname
+                            ,"email": email
+                            ,"locality": locality
+                            ,"username": username
+                            ,"password": password
                             }
                         )
                 }
@@ -64,17 +65,18 @@ export const registerUser = async (firstName, surname, email, locality, username
         console.log('locality:', locality)
         const data = await response.json()
 
-        if (data.errorMessage) {
+        if (data.errorMessage) 
+        {
             return { message: data.errorMessage, userCreated: false }
-            
         }
-        else {
+        else 
+        {
             return { message: data.message, user: data.user, userCreated: true }
         }
     }
     catch (error) {
         console.log(error)
-        return { message: 'Create User error (index.js) - ' + error.message, userCreated: false }
+        return { message: 'Create User error (utils/index.js) - ' + error.message, userCreated: false }
     }
 }
 
@@ -82,29 +84,73 @@ export const getAllUsers = async (jwtToken) => {
     try {
         const response = await fetch
             (`${process.env.REACT_APP_BASE_URL}/users/getallusers`,
-                {
-                    method: "GET"
-                    , headers:
-                    {
-                        "Content-Type": "application/json"
-                        , Authorization: `Bearer ${jwtToken}`
+                {method: "GET"
+                ,headers:
+                    {"Content-Type": "application/json"
+                    ,Authorization: `Bearer ${jwtToken}`
                     }
                 }
             )
 
         const data = await response.json();
 
-        if (data.errrorMessage) {
-            return { message: 'Get Users error (index.js) - ' + data.errorMessage }
+        if (data.errorMessage) 
+        {
+            return { message: 'Get Users error (utils/index.js) - ' + data.errorMessage }
         }
-        else {
+        else 
+        {
             return { users: data.users, message: data.message }
         }
 
     }
     catch (error) {
         console.log(error)
-        return { message: 'Get Users error (index.js) - ' + error.message }
+        return { message: 'Get Users error (utils/index.js) - ' + error.message }
+    }
+
+}
+
+export const updateUser = async (jwtToken, key, value, username) => 
+{
+    console.log('updateUser (tiels/index.js username - ', username)
+    try {
+        const response = await fetch
+            (`${process.env.REACT_APP_BASE_URL}/users/updateuser`,
+                {method: "GET"
+                ,headers:
+                    {"Content-Type": "application/json"
+                    ,Authorization: `Bearer ${jwtToken}`
+                    }
+                , body: JSON.stringify
+                    (
+                        {"updateKey": key
+                        ,"updateValue": value
+                        ,"where": username
+                        }
+                    )
+                }
+            )
+
+        const data = await response.json();
+
+        if (data.errorMessage) 
+        {
+            return { message: 'Update Users error (utils/index.js) - ' + data.errorMessage }
+        }
+        else if (data.message === 'failure') 
+        {
+            return { message: 'Update of User "' + username + '" failed middleware error ' + data.message }
+        }
+        else 
+        {
+            return { message: data.updateResult }
+        }
+
+    }
+    catch (error) {
+        console.log(error)
+        return { message: 'Update Users error (utils/index.js) - ' + error.message }
     }
 
 }
@@ -133,10 +179,12 @@ export const deleteUser = async (username, jwtToken) => {
         {
             return {deleteSuccessful:false, message:data.errorMessage}
         }
-        else if (data.message === 'failure') {
+        else if (data.message === 'failure') 
+        {
             return { deleteSuccessful: false, message: 'Delate of User "' + username + '" failed middleware error ' + data.message }
         }
-        else {
+        else 
+        {
             return { deleteSuccessful: true, message: 'User "' + username + '" successfully deleted from the table Users' }
         }
     }
