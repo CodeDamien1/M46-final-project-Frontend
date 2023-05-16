@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { registerUser } from "../../utils";
 import './Register.css';
 
-function Register({onClose}) {
+function Register({ onClose }) {
   const [firstName, setFirstName] = useState();
   const [surname, setSurname] = useState();
   const [email, setEmail] = useState();
@@ -49,19 +49,19 @@ function Register({onClose}) {
 
         <form onSubmit={submitHandler}>
           <label>
-            firstName:
+            FirstName:<br></br>
             <input type="text" onChange={e => setFirstName(e.target.value)} required />
           </label>
           <label>
-            surname:
+            Surname:<br></br>
             <input type="text" onChange={e => setSurname(e.target.value)} required />
           </label>
           <label>
-            email:
+            Email:<br></br>
             <input type="text" onChange={e => setEmail(e.target.value)} required />
           </label>
           <label>
-            locality
+            Locality:<br></br>
             <select onChange={(e) => { console.log('select value:', e.target.value); setLocality(e.target.value) }} required >
               <option value="null">Please select a locality</option>
               <option value="601">All of United Kingdom</option>
@@ -76,11 +76,11 @@ function Register({onClose}) {
             </select>
           </label>
           <label>
-            Username:
+            Username:<br></br>
             <input type="text" onChange={e => setUsername(e.target.value)} required />
           </label>
           <label>
-            Password:
+            Password:<br></br>
             <input type="text" onChange={e => setPassword(e.target.value)} required />
           </label>
           <button type='submit'>Create an account</button>

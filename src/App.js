@@ -46,8 +46,16 @@ function App() {
     setUser({ 'username': user })
     setJwt(jwtoken)
   }
+  const customStyles = {
 
-  console.log('page:- ', page)
+    content: {
+      backgroundColor: "black",
+      opacity: "0.8",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    }
+  }
 
   return (
     <div className="App">
@@ -67,9 +75,10 @@ function App() {
                     : (page === 'd')
                       ? <UserDelete jwtToken={jwt} selectedUser={selectedUser} setUser={setUser} setPage={setPage} user={user} />
                       : <Events setPage={setPage} user={user} setEvent={setEvent} setCities={setCities} dma={607} />
-        : <Login setUser={setUser} setPage={setPage} handleOpenRegisterModal={handleOpenRegisterModal} />
+          : <Login setUser={setUser} setPage={setPage} handleOpenRegisterModal={handleOpenRegisterModal} />
       }
-      <ReactModal 
+      <ReactModal
+        style={customStyles}
         isOpen={page === 'r'}
         onRequestClose={handleCloseRegisterModal}
       >

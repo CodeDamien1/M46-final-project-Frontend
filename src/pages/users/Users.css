@@ -1,65 +1,73 @@
-.events-button
-{
-    background-color:#BA3B0A;
-    border:solid 2px #FFA458;
-    border-radius:5vw;
-    color:#FFA458;
-    font-size:2vw;
-    width:10vw;
-    padding:2px;
-    margin:3px;
-    cursor:pointer;
-}
-.events-button:hover
-{
-    background-color:#FFA458;
-    border-color:#BA3B0A;
-    color:#BA3B0A;
+.events-button {
+    background: linear-gradient(to right, #ffa458, #bb3b0b);
+    border: solid 1px #FFA458;
+    border-radius: 1rem;
+    color: white;
+    font-size: 2vw;
+    width: 10vw;
+    padding: 2px;
+    margin: 1px;
+    cursor: pointer;
 }
 
-.users-title
-{
-    color:#FFA458;
-    font-size:2vw;
+.events-button:hover {
+    background-color: #FFA458;
+    border-color: #BA3B0A;
+    color: #BA3B0A;
 }
 
-.login-user-name
-{
-    color:#FFA458;
-    font-size:2vw;
+
+.users-title {
+    color: #FFA458;
+    font-size: 2vw;
 }
 
-.list-user-name
-{
-    background-color:transparent;
-    border:none;
-    color:#BA3B0A;
-    font-size:2vw;
-    width:10vw;
-    padding:2px;
-    margin:3px;
-    cursor:pointer;
-}
-.list-user-name:hover
-{
-    color:#FFA458;
+.list-user-name {
+    background-color: transparent;
+    border: none;
+    color: #BA3B0A;
+    font-size: 2vw;
+    width: 10vw;
+    padding: 2px;
+    margin: 3px;
+    cursor: pointer;
 }
 
-.users-here
-{
-    background-color:#BA3B0A;
-    border:solid 2px #FFA458;
-    border-radius:5vw;
-    color:#FFA458;
-    font-size:2vw;
-    width:10vw;
-    padding:2px;
-    margin:3px;
-    cursor:pointer;
+.list-user-name:hover {
+    color: #FFA458;
 }
-.users-here:hover
-{
-    background-color:#FFA458;
-    border-color:#BA3B0A;
-    color:#BA3B0A;
+
+.users-here {
+    background: linear-gradient(to right, #ffa458, #bb3b0b);
+    border: solid 2px #FFA458;
+    border-radius: 1rem;
+    color: #FFA458;
+    font-size: 2vw;
+    width: 10vw;
+    padding: 0.5rem;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.users-here:hover {
+    background-color: #FFA458;
+    border-color: #BA3B0A;
+    color: #BA3B0A;
+}
+
+.login-user-name {
+    color: #FFA458;
+    font-size: 2vw;
+}
+
+.list-user-name {
+    background-color: transparent;
+    border: none;
+    font-size: 2vw;
+    width: 15vw;
+    cursor: pointer;
+}
+
+.list-user-name:hover {
+    color: #BA3B0A;
 }
