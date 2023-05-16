@@ -78,7 +78,7 @@ function UserUpdate({ jwtToken, setPage, selectedUser })
                         First Name:
                     </td>
                     <td>
-                        <input type="text" value={fname} onChange={ (e) => setFname(e.target.value) } />
+                        <input type="text" value={fname} className="user-update-data" onChange={ (e) => setFname(e.target.value) } />
                     </td>
                 </tr>
                 <tr>
@@ -86,7 +86,7 @@ function UserUpdate({ jwtToken, setPage, selectedUser })
                       Surname:
                     </td>
                     <td>
-                      <input type="text" value={sname} onChange={ (e) => setSname(e.target.value) } required />
+                      <input type="text" value={sname} className="user-update-data" onChange={ (e) => setSname(e.target.value) } required />
                     </td>
                 </tr>
                 <tr>
@@ -94,7 +94,7 @@ function UserUpdate({ jwtToken, setPage, selectedUser })
                       Email:
                     </td>
                     <td>
-                      <input type="text" value={email} onChange={ (e) => setEmail(e.target.value) } required />
+                      <input type="text" value={email} className="user-update-data" onChange={ (e) => setEmail(e.target.value) } required />
                     </td>
                 </tr>
                 <tr>
@@ -102,7 +102,7 @@ function UserUpdate({ jwtToken, setPage, selectedUser })
                       Locality:              
                     </td>
                     <td>
-                        <select onChange={(e) => setLocality(e.target.value)}>
+                        <select className="user-update-data" onChange={(e) => setLocality(e.target.value)}>
                         {
                             dmas.map
                             ((dma, index) => 
@@ -123,10 +123,12 @@ function UserUpdate({ jwtToken, setPage, selectedUser })
                 </tr>
                 <tr>
                     <td>   
-                        <form onSubmit={userUpdate} className="user-update-buttons" >
+                        <form onSubmit={userUpdate} >
+                            <div className="user-update-buttons">
                             <input type="button" className="user-update-button" value="users" onClick={ () => setPage('u') } />
                             <input type="button" className="user-update-button" value="events" onClick={ () => setPage('l') } />
                             <input type="submit" className="user-update-button" value="update" />
+                            </div>
                         </form>
                     </td>
                 </tr>
