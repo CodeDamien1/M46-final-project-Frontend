@@ -1,6 +1,7 @@
 import { deleteCookie } from '../../common'
 import '../../App.css'
 import './Header.css'
+import headerImage from '../../img/logo-no-back.png'
 
 function Header({ setUser, setPage, user }) {
 
@@ -13,10 +14,13 @@ function Header({ setUser, setPage, user }) {
     return (
         <div className="App">
             <div>
+                <img src={headerImage} height="100px" width="auto" alt=""></img>
                 <div className="header-line">
                     {
                         user
-                            ? <div>
+                            ?
+                            <div>
+
                                 User: <i> {user.username}</i>
                                 <input type="button" value="logout" className="delete-button" onClick={() => logout()} />
                             </div>
@@ -25,7 +29,7 @@ function Header({ setUser, setPage, user }) {
                 </div>
             </div>
 
-        </div>
+        </div >
     )
 }
 
