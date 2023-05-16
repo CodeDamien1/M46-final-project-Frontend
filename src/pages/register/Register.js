@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { registerUser } from "../../utils";
-import '../../App.css';
+import './Register.css';
 
-function Register({ setPage }) {
+function Register({ onClose }) {
   const [firstName, setFirstName] = useState();
   const [surname, setSurname] = useState();
   const [email, setEmail] = useState();
@@ -13,9 +13,6 @@ function Register({ setPage }) {
 
   //issue with setPage
 
-  function login() {
-    setPage();
-  }
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -45,42 +42,45 @@ function Register({ setPage }) {
   return (
     <div className='register-container'>
       <div className="modal-content">
-        <button onClick={() => login()}>Close</button>
+
+
+        <button onClick={onClose} >Close</button>
         <h2>Welcome</h2>
+
         <form onSubmit={submitHandler}>
           <label>
-            firstName:
+            FirstName:<br></br>
             <input type="text" onChange={e => setFirstName(e.target.value)} required />
           </label>
           <label>
-            surname:
+            Surname:<br></br>
             <input type="text" onChange={e => setSurname(e.target.value)} required />
           </label>
           <label>
-            email:
+            Email:<br></br>
             <input type="text" onChange={e => setEmail(e.target.value)} required />
           </label>
           <label>
-            locality
+            Locality:<br></br>
             <select onChange={(e) => { console.log('select value:', e.target.value); setLocality(e.target.value) }} required >
               <option value="null">Please select a locality</option>
-              <option value="All of United Kingdom">All of United Kingdom</option>
-              <option value="London">London</option>
-              <option value="South">South</option>
-              <option value="Midlands and Central">Midlands and Central</option>
-              <option value="Wales and North West">Wales and North West</option>
-              <option value="North and North East">North and North East</option>
-              <option value="Scotland">Scotland</option>
-              <option value="All of Ireland">All of Ireland</option>
-              <option value="Northern Ireland">Northern Ireland</option>
+              <option value="601">All of United Kingdom</option>
+              <option value="602">London</option>
+              <option value="603">South</option>
+              <option value="604">Midlands and Central</option>
+              <option value="605">Wales and North West</option>
+              <option value="606">North and North East</option>
+              <option value="607">Scotland</option>
+              <option value="608">All of Ireland</option>
+              <option value="609">Northern Ireland</option>
             </select>
           </label>
           <label>
-            Username:
+            Username:<br></br>
             <input type="text" onChange={e => setUsername(e.target.value)} required />
           </label>
           <label>
-            Password:
+            Password:<br></br>
             <input type="text" onChange={e => setPassword(e.target.value)} required />
           </label>
           <button type='submit'>Create an account</button>
