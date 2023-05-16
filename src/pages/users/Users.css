@@ -1,12 +1,12 @@
 .events-button {
-    background-color: #BA3B0A;
-    border: solid 2px #FFA458;
-    border-radius: 5vw;
-    color: #FFA458;
+    background: linear-gradient(to right, #ffa458, #bb3b0b);
+    border: solid 1px #FFA458;
+    border-radius: 1rem;
+    color: white;
     font-size: 2vw;
     width: 10vw;
     padding: 2px;
-    margin: 3px;
+    margin: 1px;
     cursor: pointer;
 }
 
@@ -38,13 +38,13 @@
 }
 
 .users-here {
-    background-color: #BA3B0A;
+    background: linear-gradient(to right, #ffa458, #bb3b0b);
     border: solid 2px #FFA458;
-    border-radius: 5vw;
+    border-radius: 1rem;
     color: #FFA458;
     font-size: 2vw;
     width: 10vw;
-    padding: 2px;
+    padding: 0.5rem;
     margin: 3px;
     cursor: pointer;
 }
