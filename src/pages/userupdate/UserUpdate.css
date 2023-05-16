@@ -22,15 +22,15 @@
     color:#BA3B0A;
 }
 
+.user-update-data
+{
+    font-size:2vw;
+}
+
 td
 {
     color:#BA3B0A;
     font-size:4vh;
     text-align:left;
     width:10vw;
-}
-
-input, select
-{
-    font-size:4vh;
 }
