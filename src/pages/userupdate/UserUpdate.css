@@ -1,0 +1,36 @@
+.user-update-buttons
+{
+    display:flex;
+}
+
+.user-update-button
+{
+    background-color:#BA3B0A;
+    border:solid 2px #FFA458;
+    border-radius:5vw;
+    color:#FFA458;
+    font-size:2vw;
+    width:10vw;
+    padding:2px;
+    margin:3px;
+    cursor:pointer;
+}
+.user-update-buttons:hover
+{
+    background-color:#FFA458;
+    border-color:#BA3B0A;
+    color:#BA3B0A;
+}
+
+td
+{
+    color:#BA3B0A;
+    font-size:4vh;
+    text-align:left;
+    width:10vw;
+}
+
+input, select
+{
+    font-size:4vh;
+}
