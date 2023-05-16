@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import '../../App.css'
 import './Events.css'
 
-function Events({ setPage, user, setEvent, dma })
-{
+function Events({ setPage, user, setEvent, dma }) {
     const [events, setEvents] = useState([])
+
 
     useEffect(() => 
     {
@@ -12,15 +12,16 @@ function Events({ setPage, user, setEvent, dma })
         {
             try 
             {
+
                 let response = await fetch(`${process.env.REACT_APP_API_URL}${dma}${process.env.REACT_APP_API_KEY}`)
-  
-                if (!response.ok) 
-                {
+
+                if (!response.ok) {
                     throw new Error(response.statusText)
                 }
                 
                 const data = await response.json()
                 const events = []
+
                 
                 for (let i in data['_embedded']['events'])
                 {
@@ -43,30 +44,29 @@ function Events({ setPage, user, setEvent, dma })
                     })
                 }
                 
+
                 setEvents(events)
-  
-            } 
-            catch (error) 
-            {
+
+            }
+            catch (error) {
                 console.log(error)
             }
         }
 
         fetchData()
         //eslint-disable-next-line
-      }, [])
+    }, [])
 
 
-    function users()
-    {
+    function users() {
         setPage('u')
     }
 
-    function viewEvent(event)
-    {
+    function viewEvent(event) {
         setEvent(event)
         setPage('e')
     }
+
 
 
   return (
@@ -97,9 +97,9 @@ function Events({ setPage, user, setEvent, dma })
                     )
                 })
             }
+
         </div>
-    </div>
-  )
+    )
 }
 
 export default Events

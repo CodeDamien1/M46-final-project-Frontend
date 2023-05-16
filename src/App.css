@@ -12,7 +12,7 @@
 }
 
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 
@@ -40,7 +40,7 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url(./img/logo-color.svg);
+  background-image: url(./img/1808239.jpg);
   background-position: center;
   background-size: cover;
   z-index: -1;
