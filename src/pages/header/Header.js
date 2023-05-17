@@ -22,7 +22,7 @@ function Header({ setUser, setPage, user }) {
                             <div>
 
                                 User: <i> {user.username}</i>
-                                <input type="button" value="logout" className="delete-button" onClick={() => logout()} />
+                                <input type="button" value="Log out" className="delete-button" onClick={() => logout()} />
                             </div>
                             : <div></div>
                     }
