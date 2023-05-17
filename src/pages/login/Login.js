@@ -3,7 +3,7 @@ import { loginUser } from '../../utils'
 import '../../App.css'
 import './Login.css'
 
-function Login({ setUser, setPage, handleOpenRegisterModal }) {
+function Login({ setUser, setPage, setDma, handleOpenRegisterModal }) {
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
   const [message, setMessage] = useState()
@@ -13,19 +13,23 @@ function Login({ setUser, setPage, handleOpenRegisterModal }) {
 
     setUser()
     const data = await loginUser(username, password)
-    console.log(data.user)
-    if (data.loginValid) {
+
+    if (data.loginValid) 
+    {
       setUser({ username: username })
+      setDma(data.user.locality)
       setPage('l')
     }
-    else {
+    else 
+    {
+      console.log('Login.js error - ', data)
       setMessage(data.message)
     }
   }
 
   return (
     <div className="App">
-      <div>Login</div>
+      <div className="login-title">login</div>
       <form onSubmit={userLogin}>
         <div className="data-entry">
           <label>
@@ -44,7 +48,7 @@ function Login({ setUser, setPage, handleOpenRegisterModal }) {
           </div>
         </div>
       </form>
-      <div>{message}</div>
+      <div className="login-message">{message}</div>
     </div>
   )
 }
