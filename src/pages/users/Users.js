@@ -16,16 +16,15 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
       try 
       {
         const data = await getAllUsers(jwtToken)
-        console.log('Users.js data.users.length - ', data.users.length)
   
-        if (data.users)
+        if (data.errorMessage)
         {
-          setUsers(data.users)
-          setPage('u')
+          setMessage('Users.js error - ' + data.errorMessage)
         }
         else
         {
-          setMessage('Users.js error - ' + data.message)
+          setUsers(data.users)
+          setPage('u')
         }
       } 
       catch (error) 
@@ -38,7 +37,7 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
     fetchUserData()
     //eslint-disable-next-line
   }, [])
-
+/*
   const getList  = async (e) => 
   {
     try 
@@ -65,7 +64,7 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
     }
  
   }
-
+*/
   function viewUser(userSelected)
   {
     console.log('userSelected: ', userSelected)
@@ -86,7 +85,7 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
           )
       }
       </div>
-      <div>{message}</div>
+      <div className="users-message">{message}</div>
       <div><input type="button" value="events" className="events-button" onClick={ () => setPage('l')} /></div>
     </div>
   )
