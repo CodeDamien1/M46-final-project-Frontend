@@ -30,7 +30,7 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
       catch (error) 
       {
         console.log('Users.js error - ', error)
-        setMessage('Users.js error - ', error.message)
+        setMessage('Users.js error - ' + error.message)
       }
     }
 
