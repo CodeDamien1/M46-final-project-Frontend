@@ -58,8 +58,8 @@
 }
    
 .event-image-container {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
   }
 
   .event-item {
@@ -70,8 +70,8 @@
   }
   
   .event-image {
-    width: 150px;
-    height: 150px;
+    width: 25vh;
+    height: 25vh;
     z-index: 1;
   }
   
