@@ -5,7 +5,7 @@ import { deleteCookie } from '../../common'
 import '../../App.js'
 import './UserUpdate.css'
 
-function UserUpdate({ jwtToken, setPage, selectedUser, setUser }) {
+function UserUpdate({ jwtToken, setPage, setUser, setDma, selectedUser }) {
     const [fname, setFname] = useState(selectedUser.firstName)
     const [sname, setSname] = useState(selectedUser.surname)
     const [email, setEmail] = useState(selectedUser.email)
@@ -54,6 +54,7 @@ function UserUpdate({ jwtToken, setPage, selectedUser, setUser }) {
                 data.locality = await updateUser(jwtToken, 'locality', locality, selectedUser.username)
                 console.log('UserUpdate.js locality data: ', data.locality.message)
                 data.message = data.locality.message
+                setDma(locality)
             }
 
             if (username !== prev.username) {

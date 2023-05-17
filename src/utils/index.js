@@ -28,7 +28,6 @@ export const loginUser = async (username, password) => {
         else 
         {
             writeCookie('jwt_token', data.user.token, 7)
-            console.log('not errror ')
             return { user: data.user, loginValid: true }
         }
     }
