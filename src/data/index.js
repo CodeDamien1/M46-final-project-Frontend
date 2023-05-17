@@ -312,6 +312,24 @@ export const getDmas = (locality) =>
             }
             return ddd
         default:
-            return dmas
+            let found = false
+            for (let dma of dmas)
+            {
+                if (dma.value === locality)
+                {
+                    ddd.push(dma)
+                    found = true
+                    break
+                }
+            }
+
+            if (found)
+            {
+                return ddd[0].label
+            }
+            else
+            {
+                return dmas
+            }
     }
 }

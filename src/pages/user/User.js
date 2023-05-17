@@ -1,10 +1,13 @@
 import { useState } from 'react'
+import { getDmas } from '../../data'
 import '../../App.js'
 import './User.css'
 
 function User({ jwtToken, setPage, setUser, selectedUser, user })
 {
   const [message, setMessage] = useState('')
+  const dlocality = getDmas(selectedUser.locality)
+  console.log('User.js dlocality', dlocality)
 
   function updateUser()
   {
@@ -40,25 +43,22 @@ function User({ jwtToken, setPage, setUser, selectedUser, user })
               <div className="user-label">First Name:</div>
               <div className="user-data"><i>{selectedUser.firstName}</i></div>
             </div>
-          <div>
+
             <div className="user-line">
               <div className="user-label">Surame:</div>
               <div className="user-data"><i>{selectedUser.surname}</i></div>
             </div>
-          </div>
-          <div>
+
             <div className="user-line">
               <div className="user-label">Email:</div>
               <div className="user-data"><i>{selectedUser.email}</i></div>
             </div>
-          </div>
-          <div>
+
             <div className="user-line">
               <div className="user-label">Locality:</div>
-              <div className="user-data"><i>{selectedUser.locality}</i></div>
+              <div className="user-data"><i>{dlocality}</i></div>
             </div>
-          </div>
-          <div>
+
             <div className="user-line">
               <div className="user-label">Username:</div>
               <div className="user-data"><i>{selectedUser.username}</i></div>
@@ -70,8 +70,7 @@ function User({ jwtToken, setPage, setUser, selectedUser, user })
             <input type="button" value="update" className="user-buttons" onClick = {() => updateUser(selectedUser)} />
             <input type="button" value="delete" className="user-buttons" onClick = {() => deleteUser(selectedUser)} />
           </div>
-          <div>{message}</div>
-          </div>
+          <div className="user-message">{message}</div>
         </div>
       )
 }
