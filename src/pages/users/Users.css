@@ -1,17 +1,83 @@
-.events-button
+.events-button 
 {
-    background-color:grey;
-    border:solid 2px black;
-    border-radius:10px;
-    color:black;
-    width:80px;
-    padding:2px;
-    margin:2px;
-    cursor:pointer;
+    background: linear-gradient(to right, #ffa458, #bb3b0b);
+    border: solid 1px #FFA458;
+    border-radius: 1rem;
+    color: white;
+    font-size: 2vw;
+    width: 10vw;
+    padding: 2px;
+    margin: 1px;
+    cursor: pointer;
 }
-.events-button:hover
+
+.events-button:hover 
 {
-    background-color:black;
-    border-color:grey;
-    color:grey;
+    background-color: #FFA458;
+    border-color: #BA3B0A;
+    color: #BA3B0A;
+}
+
+
+.users-title 
+{
+    color: #FFA458;
+    font-size: 2vw;
+}
+
+.list-user-name 
+{
+    background-color: transparent;
+    border: none;
+    color: #BA3B0A;
+    font-size: 2vw;
+    width: 10vw;
+    padding: 2px;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.list-user-name:hover 
+{
+    color: #FFA458;
+}
+
+.users-here 
+{
+    background: linear-gradient(to right, #ffa458, #bb3b0b);
+    border: solid 2px #FFA458;
+    border-radius: 1rem;
+    color: #FFA458;
+    font-size: 2vw;
+    width: 10vw;
+    padding: 0.5rem;
+    margin: 3px;
+    cursor: pointer;
+}
+
+.users-here:hover 
+{
+    background-color: #FFA458;
+    border-color: #BA3B0A;
+    color: #BA3B0A;
+}
+
+.login-user-name 
+{
+    color: #FFA458;
+    font-size: 2vw;
+}
+
+.users-name 
+{
+    background-color: transparent;
+    border: none;
+    color: #BA3B0A;
+    font-size: 2vw;
+    width: 15vw;
+    cursor: pointer;
+}
+.users-name:hover 
+{
+    color: #FFA458;
 }

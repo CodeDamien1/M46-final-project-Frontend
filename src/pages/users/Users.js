@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { getAllUsers } from '../../utils'
 import '../../App.css'
 import './Users.css'
@@ -9,6 +9,35 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
   const [message, setMessage] = useState()
   const [users, setUsers] = useState([])
 
+  useEffect(() => 
+  {
+    const fetchUserData = async () => 
+    {
+      try 
+      {
+        const data = await getAllUsers(jwtToken)
+        console.log('Users.js data.users.length - ', data.users.length)
+  
+        if (data.users)
+        {
+          setUsers(data.users)
+          setPage('u')
+        }
+        else
+        {
+          setMessage('Users.js error - ' + data.message)
+        }
+      } 
+      catch (error) 
+      {
+        console.log('Users.js error - ', error)
+        setMessage('Users.js error - ' + error.message)
+      }
+    }
+
+    fetchUserData()
+    //eslint-disable-next-line
+  }, [])
 
   const getList  = async (e) => 
   {
@@ -40,28 +69,25 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
   function viewUser(userSelected)
   {
     console.log('userSelected: ', userSelected)
-    setSelectedUser(userSelected.username)
+    setSelectedUser(userSelected)
     setPage('v')
   }
 
   return (
     <div className="App">
-      <div>users     User: {user.username} </div>
+      <div className="users-title"> users</div>
       <div>
       {
-        users.length === 0
-        ? <form onSubmit={getList}>To get a list of users click <input type="submit" value="here" /></form>
-        : message ? <div>{message}</div>:
           users.map
           (user =>
             <div>
-              <input type="button" value={user.username} onClick={(e) => viewUser(user)} />
+              <input type="button" value={user.username} className="users-name" onClick={(e) => viewUser(user)} />
             </div>
           )
       }
       </div>
       <div>{message}</div>
-      <div><input type="button" value="events" className="events-button" onClick={ () => setPage('e')} /></div>
+      <div><input type="button" value="events" className="events-button" onClick={ () => setPage('l')} /></div>
     </div>
   )
 }

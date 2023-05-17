@@ -3,7 +3,7 @@ import { loginUser } from '../../utils'
 import '../../App.css'
 import './Login.css'
 
-function Login({ setUser, setPage }) {
+function Login({ setUser, setPage, setDma, handleOpenRegisterModal }) {
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
   const [message, setMessage] = useState()
@@ -13,24 +13,24 @@ function Login({ setUser, setPage }) {
 
     setUser()
     const data = await loginUser(username, password)
-    console.log(data.user)
-    if (data.loginValid) {
+    
+    console.log('Login.js data - ', data.user)
+    
+    if (data.loginValid) 
+    {
       setUser({ username: username })
+      setDma(data.user.locality)
       setPage('l')
     }
-    else {
+    else 
+    {
       setMessage(data.message)
     }
   }
 
-
-  function register() {
-    setPage('r')
-  }
-
   return (
     <div className="App">
-      <div>login</div>
+      <div className="login-title">login</div>
       <form onSubmit={userLogin}>
         <div className="data-entry">
           <label>
@@ -42,14 +42,16 @@ function Login({ setUser, setPage }) {
             <input type="text" onChange={e => setPassword(e.target.value)} required />
           </label>
           <div>
+
             <input type="submit" value="login" className="login-buttons" />
-            <input type="button" value="register" className="login-buttons" onClick={() => register()} />
+            <input type="button" value="register" className="login-buttons" onClick={handleOpenRegisterModal} />
+
           </div>
         </div>
       </form>
-      <div>{message}</div>
+      <div className="login-message">{message}</div>
     </div>
   )
 }
 
-export default Login
+export default Login;
