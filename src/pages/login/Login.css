@@ -22,6 +22,7 @@
 }
 
 label {
+    border: solid 0.01rem white;
     color: white;
     padding: 0.5rem;
 

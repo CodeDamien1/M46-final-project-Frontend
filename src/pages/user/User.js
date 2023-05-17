@@ -1,81 +1,71 @@
 import { useState } from 'react'
-import { deleteUser } from '../../utils'
-import { deleteCookie } from '../../common'
+import { getDmas } from '../../data'
 import '../../App.js'
 import './User.css'
 
-function User({ jwtToken, setPage, setUser, selectedUser, user })
-{
+function User({ jwtToken, setPage, setUser, selectedUser, user }) {
   const [message, setMessage] = useState('')
+  const dlocality = getDmas(selectedUser.locality)
+  console.log('User.js dlocality', dlocality)
 
-  function updateUser()
-  {
+  function updateUser() {
     console.log('User.js updateuser')
-    if (selectedUser.username != user.username)
-    {
+    if (selectedUser.username !== user.username) {
       setMessage('cannot update user')
     }
-    else
-    {
+    else {
       setPage('t')
     }
   }
 
-  function deleteUser()
-  {
+  function deleteUser() {
     console.log('User.js deleteuser')
-    if (selectedUser.username != user.username)
-    {
+    if (selectedUser.username !== user.username) {
       setMessage('cannot delete user')
     }
-    else
-    {
+    else {
       setPage('d')
     }
   }
 
   return (
-        <div className="App user-page">
-          <div className="users-title">view users details</div>
-          <div>
-            <label>
-              First Name:
-              <i>{selectedUser.firstName}</i>
-            </label>
-          </div>
-          <div>
-            <label>
-              Surname:
-              <i>{selectedUser.surname}</i>
-            </label>
-          </div>
-          <div>
-            <label>
-              Email:
-              <i>{selectedUser.email}</i>
-            </label>
-          </div>
-          <div>
-            <label>
-              Locality:
-              <i>{selectedUser.locality}</i>
-            </label>
-          </div>
-          <div>
-            <label>
-              Username:
-              <i>{selectedUser.username}</i>
-            </label>
-          </div>
-
-          <div>
-            <input type="button" value="users" className="user-buttons" onClick = {() => setPage('u') } />
-            <input type="button" value="update" className="user-buttons" onClick = {() => updateUser(selectedUser)} />
-            <input type="button" value="delete" className="user-buttons" onClick = {() => deleteUser(selectedUser)} />
-          </div>
-          <div>{message}</div>
+    <div className="App">
+      <div className="users-title">view users details</div>
+      <div className="user-page">
+        <div className="user-line">
+          <div className="user-label">First Name:</div>
+          <div className="user-data"><i>{selectedUser.firstName}</i></div>
         </div>
-      )
+
+        <div className="user-line">
+          <div className="user-label">Surname:</div>
+          <div className="user-data"><i>{selectedUser.surname}</i></div>
+        </div>
+
+        <div className="user-line">
+          <div className="user-label">Email:</div>
+          <div className="user-data"><i>{selectedUser.email}</i></div>
+        </div>
+
+        <div className="user-line">
+          <div className="user-label">Locality:</div>
+          <div className="user-data"><i>{dlocality}</i></div>
+        </div>
+
+        <div className="user-line">
+          <div className="user-label">Username:</div>
+          <div className="user-data"><i>{selectedUser.username}</i></div>
+        </div>
+      </div>
+
+      <div>
+        <input type="button" value="Users" className="user-buttons" onClick={() => setPage('u')} />
+        <input type="button" value="Update" className="user-buttons" onClick={() => updateUser(selectedUser)} />
+        <input type="button" value="Delete" className="user-buttons" onClick={() => deleteUser(selectedUser)} />
+      </div>
+      <div className="user-message">{message}</div>
+    </div>
+  )
 }
 
 export default User
