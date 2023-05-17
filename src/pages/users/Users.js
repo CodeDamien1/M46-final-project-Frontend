@@ -3,19 +3,16 @@ import { getAllUsers } from '../../utils'
 import '../../App.css'
 import './Users.css'
 
-function Users({ jwtToken, setPage, setSelectedUser, user })
-{
+function Users({ jwtToken, setPage, setSelectedUser, user }) {
 
   const [message, setMessage] = useState()
   const [users, setUsers] = useState([])
 
-  useEffect(() => 
-  {
-    const fetchUserData = async () => 
-    {
-      try 
-      {
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
         const data = await getAllUsers(jwtToken)
+
   
         if (data.errorMessage)
         {
@@ -26,9 +23,8 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
           setUsers(data.users)
           setPage('u')
         }
-      } 
-      catch (error) 
-      {
+      }
+      catch (error) {
         console.log('Users.js error - ', error)
         setMessage('Users.js error - ' + error.message)
       }
@@ -37,32 +33,29 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
     fetchUserData()
     //eslint-disable-next-line
   }, [])
+
 /*
   const getList  = async (e) => 
   {
     try 
     {
-
       e.preventDefault() // will not refresh the browser
 
       const data = await getAllUsers(jwtToken)
 
-      if (data.users)
-      {
+      if (data.users) {
         setUsers(data.users)
         setPage('u')
       }
-      else
-      {
+      else {
         setMessage(data.message)
       }
-    } 
-    catch (error) 
-    {
+    }
+    catch (error) {
       console.log('Users.js error - ', error)
       setMessage(error)
     }
- 
+
   }
 */
   function viewUser(userSelected)
@@ -74,16 +67,16 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
 
   return (
     <div className="App">
-      <div className="users-title"> users</div>
+      <div className="users-title"> Users</div>
       <div>
-      {
+        {
           users.map
-          (user =>
-            <div>
-              <input type="button" value={user.username} className="users-name" onClick={(e) => viewUser(user)} />
-            </div>
-          )
-      }
+            (user =>
+              <div>
+                <input type="button" value={user.username} className="users-name" onClick={(e) => viewUser(user)} />
+              </div>
+            )
+        }
       </div>
       <div className="users-message">{message}</div>
       <div><input type="button" value="events" className="events-button" onClick={ () => setPage('l')} /></div>
