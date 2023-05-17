@@ -135,7 +135,7 @@ export const updateUser = async (jwtToken, key, value, username) =>
 
         if (data.errorMessage) 
         {
-            return { message: 'Update Users error (utils/index.js) - ' + data.errorMessage }
+            return { errorMessage: 'Update Users error (utils/index.js) - ' + data.errorMessage }
         }
         else 
         {
@@ -145,7 +145,7 @@ export const updateUser = async (jwtToken, key, value, username) =>
     }
     catch (error) {
         console.log(error)
-        return { message: 'Update Users error (utils/index.js) - ' + error.message }
+        return { errorMessage: 'Update Users error (utils/index.js) - ' + error.message }
     }
 
 }

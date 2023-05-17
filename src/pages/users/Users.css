@@ -1,4 +1,5 @@
-.events-button {
+.events-button 
+{
     background: linear-gradient(to right, #ffa458, #bb3b0b);
     border: solid 1px #FFA458;
     border-radius: 1rem;
@@ -10,19 +11,22 @@
     cursor: pointer;
 }
 
-.events-button:hover {
+.events-button:hover 
+{
     background-color: #FFA458;
     border-color: #BA3B0A;
     color: #BA3B0A;
 }
 
 
-.users-title {
+.users-title 
+{
     color: #FFA458;
     font-size: 2vw;
 }
 
-.list-user-name {
+.list-user-name 
+{
     background-color: transparent;
     border: none;
     color: #BA3B0A;
@@ -33,11 +37,13 @@
     cursor: pointer;
 }
 
-.list-user-name:hover {
+.list-user-name:hover 
+{
     color: #FFA458;
 }
 
-.users-here {
+.users-here 
+{
     background: linear-gradient(to right, #ffa458, #bb3b0b);
     border: solid 2px #FFA458;
     border-radius: 1rem;
@@ -49,25 +55,29 @@
     cursor: pointer;
 }
 
-.users-here:hover {
+.users-here:hover 
+{
     background-color: #FFA458;
     border-color: #BA3B0A;
     color: #BA3B0A;
 }
 
-.login-user-name {
+.login-user-name 
+{
     color: #FFA458;
     font-size: 2vw;
 }
 
-.list-user-name {
+.users-name 
+{
     background-color: transparent;
     border: none;
+    color: #BA3B0A;
     font-size: 2vw;
     width: 15vw;
     cursor: pointer;
 }
-
-.list-user-name:hover {
-    color: #BA3B0A;
+.users-name:hover 
+{
+    color: #FFA458;
 }
