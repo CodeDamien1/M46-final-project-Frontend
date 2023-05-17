@@ -13,9 +13,7 @@ function Login({ setUser, setPage, setDma, handleOpenRegisterModal }) {
 
     setUser()
     const data = await loginUser(username, password)
-    
-    console.log('Login.js data - ', data.user)
-    
+
     if (data.loginValid) 
     {
       setUser({ username: username })
@@ -24,6 +22,7 @@ function Login({ setUser, setPage, setDma, handleOpenRegisterModal }) {
     }
     else 
     {
+      console.log('Login.js error - ', data)
       setMessage(data.message)
     }
   }

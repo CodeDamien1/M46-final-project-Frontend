@@ -12,15 +12,16 @@ function Users({ jwtToken, setPage, setSelectedUser, user }) {
     const fetchUserData = async () => {
       try {
         const data = await getAllUsers(jwtToken)
-        console.log('Users.js data.users.length - ', data.users.length)
 
-        if (data.users) {
-          setUsers(data.users)
-          setPage('u')
+  
+        if (data.errorMessage)
+        {
+          setMessage('Users.js error - ' + data.errorMessage)
         }
         else
         {
-          setMessage('Users.js error - ' + data.message)
+          setUsers(data.users)
+          setPage('u')
         }
       }
       catch (error) {
@@ -33,9 +34,11 @@ function Users({ jwtToken, setPage, setSelectedUser, user }) {
     //eslint-disable-next-line
   }, [])
 
-  const getList = async (e) => {
-    try {
-
+/*
+  const getList  = async (e) => 
+  {
+    try 
+    {
       e.preventDefault() // will not refresh the browser
 
       const data = await getAllUsers(jwtToken)
@@ -54,8 +57,9 @@ function Users({ jwtToken, setPage, setSelectedUser, user }) {
     }
 
   }
-
-  function viewUser(userSelected) {
+*/
+  function viewUser(userSelected)
+  {
     console.log('userSelected: ', userSelected)
     setSelectedUser(userSelected)
     setPage('v')
@@ -74,8 +78,8 @@ function Users({ jwtToken, setPage, setSelectedUser, user }) {
             )
         }
       </div>
-      <div>{message}</div>
-      <div><input type="button" value="Events" className="events-button" onClick={() => setPage('l')} /></div>
+      <div className="users-message">{message}</div>
+      <div><input type="button" value="events" className="events-button" onClick={ () => setPage('l')} /></div>
     </div>
   )
 }

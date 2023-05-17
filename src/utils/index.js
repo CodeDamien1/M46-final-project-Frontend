@@ -20,23 +20,21 @@ export const loginUser = async (username, password) => {
             )
 
         const data = await response.json()
-        console.log('After response: ' + JSON.stringify(data))
 
-        writeCookie('jwt_token', data.user.token, 7)
-
-        if (data.error) 
+        if (data.errorMessage) 
         {
-            return { message: data.error, loginValid: false }
+            return { message: data.errorMessage, loginValid: false }
         }
         else 
         {
+            writeCookie('jwt_token', data.user.token, 7)
+            console.log('not errror ')
             return { user: data.user, loginValid: true }
         }
-
     }
     catch (error) 
     {
-        console.log('Login User: ' + error)
+        console.log('Login error (utils/index.js) - ' + error)
         return { message: 'Login error (utils/index.js) - ' + error, loginValid: false }
     }
 }
