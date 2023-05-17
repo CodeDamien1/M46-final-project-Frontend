@@ -3,42 +3,26 @@
     justify-content: center;
     color: #FFA458;
     font-family: century gothic;
-    font-size: 2vw;
+    font-size: 0.8rem;
 }
 
 .delete-button {
-    background-color: #BA3B0A;
-    border: solid 2px #FFA458;
-    border-radius: 5vw;
-    font-size: 2vw;
-    color: #FFA458;
-    width: 100px;
+    background: linear-gradient(to right, #ffa458, #bb3b0b);
+    border: solid 0.1rem white;
+    border-radius: 0.2rem;
+    font-size: 0.8rem;
+    min-width: 4.5rem;
     margin-left: 2vw;
+    padding: 0.1rem;
     cursor: pointer;
 }
 
 .delete-button:hover {
-    background-color: #FFA458;
-    border-color: #BA3B0A;
-    color: #BA3B0A;
+    background: linear-gradient(to right, #bb3b0b, #ffa458);
+    scale: 1.05;
 }
 
 .logo {
     display: flex;
     justify-content: center;
-}
-
-.delete-button {
-    background-color: yellowgreen;
-    border: solid -2px green;
-    border-radius: 10px;
-    color: green;
-    width: 100px;
-    cursor: pointer;
-}
-
-.delete-button:hover {
-    background-color: green;
-    border-color: yellowgreen;
-    color: yellowgreen;
 }

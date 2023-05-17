@@ -1,37 +1,29 @@
-.user-update-buttons
-{
-    display:flex;
+.user-update-buttons {
+    display: flex;
 }
 
-.user-update-button
-{
-    background-color:#BA3B0A;
-    border:solid 2px #FFA458;
-    border-radius:5vw;
-    color:#FFA458;
-    font-size:2vw;
-    width:10vw;
-    padding:2px;
-    margin:3px;
-    cursor:pointer;
-}
-.user-update-buttons:hover
-{
-    background-color:#FFA458;
-    border-color:#BA3B0A;
-    color:#BA3B0A;
+.user-update-button {
+    background: linear-gradient(to right, #ffa458, #bb3b0b);
+    border: solid 0.01rem white;
+    border-radius: 0.1rem;
+    font-size: 0.8rem;
+    min-width: 3rem;
+    padding: 0.1rem;
+    margin: 1rem;
+    cursor: pointer;
 }
 
-.user-update-data
-{
-    font-size:2vw;
+.user-update-button:hover {
+    background: linear-gradient(to right, #bb3b0b, #ffa458, );
 }
 
-td
-{
-    color:#BA3B0A;
-    font-size:4vh;
-    text-align:left;
-    width:10vw;
+.user-update-data {
+    font-size: 0.8rem;
 }
 
+td {
+    color: #BA3B0A;
+    font-size: 0.8rem;
+    text-align: left;
+    width: 10vw;
+}
