@@ -1,15 +1,18 @@
 import { useState } from 'react'
 import { getDmas } from '../../data'
 import { updateUser } from '../../utils'
+import { deleteCookie } from '../../common'
 import '../../App.js'
 import './UserUpdate.css'
 
-function UserUpdate({ jwtToken, setPage, selectedUser })
+function UserUpdate({ jwtToken, setPage, selectedUser, setUser })
 {
     const [fname, setFname] = useState(selectedUser.firstName)
     const [sname, setSname] = useState(selectedUser.surname)
     const [email, setEmail] = useState(selectedUser.email)
-    const [locality, setLocality] = useState()
+    const [locality, setLocality] = useState(selectedUser.locality)
+    const [username, setUsername] = useState(selectedUser.username)
+    const [password, setPassword] = useState(selectedUser.password)
     const [message, setMessage] = useState()
     
     const prev = 
@@ -17,8 +20,10 @@ function UserUpdate({ jwtToken, setPage, selectedUser })
         ,sname:selectedUser.surname
         ,email:selectedUser.email
         ,locality:selectedUser.locality
+        ,username:selectedUser.username
+        ,password:selectedUser.password
         }
-        
+    
     const dmas = getDmas('uk')
 
     const userUpdate = async (e) =>
@@ -26,20 +31,20 @@ function UserUpdate({ jwtToken, setPage, selectedUser })
         e.preventDefault() // will not refresh the browser
        
         try 
-        {
-            const data = {fname:'', sname:'', email:'', locality:'', message:''}
-            
+        {      
+            let data = {fname:'', sname:'', email:'', locality:'', username:''}
+
             if (fname !== prev.fname)
             {
                 data.fname = await updateUser(jwtToken, 'firstName', fname, selectedUser.username)
-                console.log('UserUpdate.js fname data: ', data.fname.message)
+                console.log('UserUpdate.js fname: ', fname, ' prev.sname: ', prev.fname)
                 data.message = data.fname.message
             }
 
             if (sname !== prev.sname)
             {
                 data.sname = await updateUser(jwtToken, 'surname', sname, selectedUser.username)
-                console.log('UserUpdate.js sname data: ', data.sname.message)
+                console.log('UserUpdate.js sname: ', sname, ' prev.sname - ', prev.sname)
                 data.message = data.sname.message
             }
 
@@ -55,9 +60,41 @@ function UserUpdate({ jwtToken, setPage, selectedUser })
                 data.locality = await updateUser(jwtToken, 'locality', locality, selectedUser.username)
                 console.log('UserUpdate.js locality data: ', data.locality.message)
                 data.message = data.locality.message
-            }    
-           
-            setPage('u')
+            }
+            
+            if (username  !== prev.username)
+            {
+                data.username = await updateUser(jwtToken, 'username', username, selectedUser.username)
+                console.log('UserUpdate.js username data: ', data.username)
+                data.message = data.username.message
+                setUser({ username:username })
+            }
+
+            if (password !== prev.password)
+            {
+                data.password = await updateUser(jwtToken, 'password', password, selectedUser.username)
+                console.log('UserUpdate.js password data: ', data.username)
+                data.message = data.password.message
+            }
+            
+            if (data.message.errorMessage)
+            {
+                setMessage(data.message.errorMessage)
+                setPage('t')
+            }
+            else
+            {
+                if (password !== prev.password)
+                {
+                    deleteCookie('jwt_token')
+                    setUser()
+                    setPage()
+                }
+                else
+                {
+                    setPage('u')
+                }
+            }
 
         } 
         catch (error) 
@@ -122,8 +159,24 @@ function UserUpdate({ jwtToken, setPage, selectedUser })
                     </td>
                 </tr>
                 <tr>
+                    <td>
+                      Username:
+                    </td>
+                    <td>
+                      <input type="text" value={username} className="user-update-data" onChange={ (e) => setUsername(e.target.value) } required />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                      Password:
+                    </td>
+                    <td>
+                      <input type="text" className="user-update-data" onChange={ (e) => setPassword(e.target.value) } required />
+                    </td>
+                </tr>
+                <tr>
                     <td>   
-                        <form onSubmit={userUpdate} >
+                        <form onSubmit={userUpdate}>
                             <div className="user-update-buttons">
                             <input type="button" className="user-update-button" value="users" onClick={ () => setPage('u') } />
                             <input type="button" className="user-update-button" value="events" onClick={ () => setPage('l') } />

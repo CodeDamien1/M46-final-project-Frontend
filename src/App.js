@@ -71,7 +71,7 @@ function App() {
                 : (page === 'v')
                   ? <User jwtToken={jwt} setPage={setPage} selectedUser={selectedUser} user={user} />
                   :(page === 't')
-                    ? <UserUpdate jwtToken={jwt} setPage={setPage} selectedUser={selectedUser} user={user} />
+                    ? <UserUpdate jwtToken={jwt} setPage={setPage} setUser={setUser} selectedUser={selectedUser} user={user} />
                     : (page === 'd')
                       ? <UserDelete jwtToken={jwt} selectedUser={selectedUser} setUser={setUser} setPage={setPage} user={user} />
                       : <Events setPage={setPage} user={user} setEvent={setEvent} setCities={setCities} dma={607} />

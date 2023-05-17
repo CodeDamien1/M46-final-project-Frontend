@@ -55,7 +55,7 @@ function Users({ jwtToken, setPage, setSelectedUser, user })
           users.map
           (user =>
             <div>
-              <input type="button" value={user.username} className="list-user-name" onClick={(e) => viewUser(user)} />
+              <input type="button" value={user.username} className="users-name" onClick={(e) => viewUser(user)} />
             </div>
           )
       }
