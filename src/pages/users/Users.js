@@ -18,13 +18,14 @@ function Users({ jwtToken, setPage, setSelectedUser, user }) {
           setUsers(data.users)
           setPage('u')
         }
-        else {
-          setMessage('Users.js error - ', data.message)
+        else
+        {
+          setMessage('Users.js error - ' + data.message)
         }
       }
       catch (error) {
         console.log('Users.js error - ', error)
-        setMessage('Users.js error - ', error.message)
+        setMessage('Users.js error - ' + error.message)
       }
     }
 
