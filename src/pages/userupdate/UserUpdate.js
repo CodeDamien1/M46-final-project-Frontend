@@ -176,7 +176,7 @@ function UserUpdate({ jwtToken, setPage, selectedUser, setUser })
                 </tr>
                 <tr>
                     <td>   
-                        <form onSubmit={userUpdate}  >
+                        <form onSubmit={userUpdate}>
                             <div className="user-update-buttons">
                             <input type="button" className="user-update-button" value="users" onClick={ () => setPage('u') } />
                             <input type="button" className="user-update-button" value="events" onClick={ () => setPage('l') } />
