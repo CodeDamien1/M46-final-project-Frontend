@@ -6,6 +6,7 @@
 }
 
 
+
 .login-buttons {
     background: linear-gradient(to right, #ffa458, #bb3b0b);
     border-radius: 10px;
@@ -16,32 +17,50 @@
     cursor: pointer;
 }
 
-.login-buttons:hover {
+.login-title
+{
+    color:#ffa458;
+    font-size:3vw;
+    margin:1vw; 
+}
+
+.login-message
+{
+    color:#ffa458;
+}
+
+.login-buttons:hover 
+{
     background: linear-gradient(to right, #bb3b0b, #ffa458);
     scale: 1.05;
 }
 
-label {
+label 
+{
+    border: solid 0.01rem white;
     color: white;
     padding: 0.5rem;
 
 }
 
-input.login-buttons {
+input.login-buttons 
+{
     color: white;
     background-color: none;
     margin-top: 0.25rem;
     border: 0.5px solid white;
 }
 
-input.delete-button {
+input.delete-button 
+{
     color: white;
     background-color: #bb3b0b;
     margin-top: 0.25rem;
     border: 0.5px solid white;
 }
 
-input {
+input 
+{
     font-size: 0.6rem;
     color: white;
     background-color: #ffa458;

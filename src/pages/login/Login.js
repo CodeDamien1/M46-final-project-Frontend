@@ -13,12 +13,15 @@ function Login({ setUser, setPage, handleOpenRegisterModal }) {
 
     setUser()
     const data = await loginUser(username, password)
-    console.log(data.user)
-    if (data.loginValid) {
+    console.log('Login.js data - ', data)
+    if (data.loginValid) 
+    {
       setUser({ username: username })
       setPage('l')
     }
-    else {
+    else 
+    {
+      console.log('Login.js message - ', data)
       setMessage(data.message)
     }
   }
@@ -44,7 +47,7 @@ function Login({ setUser, setPage, handleOpenRegisterModal }) {
           </div>
         </div>
       </form>
-      <div>{message}</div>
+      <div className="login-message">{message}</div>
     </div>
   )
 }
