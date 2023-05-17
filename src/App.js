@@ -22,7 +22,8 @@ function App() {
   const [event, setEvent] = useState()
   const [cities, setCities] = useState()
   const [selectedUser, setSelectedUser] = useState()
-  const [jwt, setJwt] = useState();
+  const [jwt, setJwt] = useState()
+  const [dma, setDma] = useState()
 
   const handleOpenRegisterModal = () => {
     setPage('r');
@@ -63,7 +64,7 @@ function App() {
       {
         user
           ? (page === 'l')
-            ? <Events setPage={setPage} user={user} setEvent={setEvent} setEvents={setEvents} setCities={setCities} dma={607} />
+            ? <Events setPage={setPage} user={user} setEvent={setEvent} setEvents={setEvents} setCities={setCities} dma={dma} />
             : (page === 'e')
               ? <Event setPage={setPage} events={events} event={event} cities={cities} user={user} />
               : (page === 'u')
@@ -75,7 +76,7 @@ function App() {
                     : (page === 'd')
                       ? <UserDelete jwtToken={jwt} selectedUser={selectedUser} setUser={setUser} setPage={setPage} user={user} />
                       : <Events setPage={setPage} user={user} setEvent={setEvent} setCities={setCities} dma={607} />
-          : <Login setUser={setUser} setPage={setPage} handleOpenRegisterModal={handleOpenRegisterModal} />
+          : <Login setUser={setUser} setPage={setPage} setDma={setDma} handleOpenRegisterModal={handleOpenRegisterModal} />
       }
       <ReactModal
         style={customStyles}

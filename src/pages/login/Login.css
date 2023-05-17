@@ -16,6 +16,18 @@
     cursor: pointer;
 }
 
+.login-title
+{
+    color:#ffa458;
+    font-size:3vw;
+    margin:1vw; 
+}
+
+.login-message
+{
+    color:#ffa458;
+}
+
 .login-buttons:hover {
     background: linear-gradient(to right, #bb3b0b, #ffa458);
     scale: 1.05;
