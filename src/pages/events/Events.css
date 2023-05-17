@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
+
 .event-title {
     margin: 0 5rem;
     font-size: 2rem;
@@ -32,12 +34,10 @@
 }
 
 .event-item {
-    background-color: #FFA458;
-    border: solid 2px #BA3B0A;
-    border-radius: 2vw;
-    margin: 1vw;
-    width: 15vw;
-    height: 15vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px;
 }
 
 .event-button {
@@ -45,6 +45,7 @@
     border-radius: 1vw;
     font-size: 3vh;
     width: 6vw;
+    height: 2vw;
     cursor: pointer;
 }
 
@@ -52,23 +53,53 @@
     background-color: #FFA458;
     border-color:#BA3B0A;
     color:#BA3B0A;
+    transform: scale(1.1);
+    transition: ease-in-out 0.1s;
 }
+   
+.event-image-container {
+    position: relative;
+    overflow: hidden;
+  }
 
-.event-item {
+  .event-item {
+    position: relative;
     display: flex;
     align-items: center;
-    border: 1px solid black;
     padding: 10px;
   }
   
   .event-image {
-    width: 16vh;
-    height: 16vh;
-    object-fit: contain;
+    width: 150px;
+    height: 150px;
+    z-index: 1;
   }
   
   .event-details {
+    position: absolute;
+    font-size: 14px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 60%;
+    color: white;
+    padding: 10px;
+    z-index: 2;
   }
 
+  .event-details:hover {
+    opacity: 100%;
+    transition: ease-in-out 0.1s;
+  }
+
+
+.event-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
