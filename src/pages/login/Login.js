@@ -38,7 +38,7 @@ function Login({ setUser, setPage, setDma, handleOpenRegisterModal }) {
           </label>
           <label>
             Password:
-            <input type="text" className="login-input" onChange={e => setPassword(e.target.value)} required />
+            <input type="password" className="login-input" onChange={e => setPassword(e.target.value)} required />
           </label>
           <div>
 
