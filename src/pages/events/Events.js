@@ -8,6 +8,7 @@ function Events({ setPage, user, setEvent, dma }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log('fetch data')
         let response = await fetch(
           `${process.env.REACT_APP_API_URL}${dma}${process.env.REACT_APP_API_KEY}`
         );
@@ -24,9 +25,20 @@ function Events({ setPage, user, setEvent, dma }) {
 
           // Get event image
           let imageUrl = "";
+          let imageUrl2 = "";
           if (event["images"] && event["images"].length > 0) {
-            imageUrl = event["images"][0]["url"];
+            imageUrl = event["images"][0]["url"]
+            imageUrl2 = event["images"][0]["url"]
+
+            for (let j in event["images"])
+            {
+              if (imageUrl !== event["images"][j]["url"])
+              {
+                imageUrl2 = event["images"][j]["url"]
+              }
+            }
           }
+
 
           events.push({
             name: event["name"],
@@ -36,6 +48,7 @@ function Events({ setPage, user, setEvent, dma }) {
             time: event["dates"]["start"]["localTime"],
             city: event["_embedded"]["venues"][0]["city"]["name"],
             imageUrl: imageUrl,
+            imageUrl2: imageUrl2
           });
         }
 
@@ -70,22 +83,22 @@ function Events({ setPage, user, setEvent, dma }) {
         />
       </div>
 
-      <div className="event-list">
+      <div className="events-list">
         {events.map((event, index) => {
           return (
-            <div className="event-item" key={index}>
-              <div className="event-name">{event.name}</div>
+            <div className="events-item" key={index}>
+              <div className="events-name">{event.name}</div>
               <img
                     src={event.imageUrl}
                     alt={event.name}
-                    className="event-image"
+                    className="events-image"
               />
               <div>{event.city}</div>
               <div>{event.date}</div>
               <input
                 type="button"
                 value="select"
-                className="event-button"
+                className="events-button"
                 onClick={() => viewEvent(event)}
               />
             </div>
