@@ -1,359 +1,80 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Header from './pages/Header'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Events from './pages/Events'
-import Event from './pages/Event'
-import Users from './pages/Users'
+import Header from './pages/header/Header'
+import Login from './pages/login/Login'
+import Register from './pages/register/Register'
+import Events from './pages/events/Events'
+import Event from './pages/event/Event'
+import Users from './pages/users/Users'
+import User from './pages/user/User'
+import UserUpdate from './pages/userupdate/UserUpdate'
+import UserDelete from './pages/userdelete/UserDelete'
+import { authCheck, getCookie } from './common'
 
-function App()
-{
-  class Dma
-  {
-    constructor(id, title)
-    {
-      this.id = id
-      this.title = title
-    }
-  }
-  class Dmas
-  {
-    constructor()
-    {
-      this.data = []
-      this.list = []
-  
-      this.loadDmas()
-    }
-  
-    loadDmas()
-    {
-                  this.addDma(new Dma(200, "All of US"))
-                  this.addDma(new Dma(212, "Abilene - Sweetwater"))
-                  this.addDma(new Dma(213, "Albany - Schenectady - Troy"))
-                  this.addDma(new Dma(214, "Albany, GA"))
-                  this.addDma(new Dma(215, "Albuquerque - Santa Fe"))
-                  this.addDma(new Dma(216, "Alexandria, LA"))
-                  this.addDma(new Dma(217, "Alpena"))
-                  this.addDma(new Dma(218, "Amarillo"))
-                  this.addDma(new Dma(219, "Anchorage"))
-                  this.addDma(new Dma(220, "Atlanta"))
-                  this.addDma(new Dma(221, "Augusta"))
-                  this.addDma(new Dma(222, "Austin"))
-                  this.addDma(new Dma(223, "Bakersfield"))
-                  this.addDma(new Dma(224, "Baltimore"))
-                  this.addDma(new Dma(225, "Bangor"))
-                  this.addDma(new Dma(226, "Baton Rouge"))
-                  this.addDma(new Dma(227, "Beaumont - Port Arthur"))
-                  this.addDma(new Dma(228, "Bend, OR"))
-                  this.addDma(new Dma(229, "Billings"))
-                  this.addDma(new Dma(230, "Biloxi - Gulfport"))
-                  this.addDma(new Dma(231, "Binghamton"))
-                  this.addDma(new Dma(232, "Birmingham (Anniston and Tuscaloosa)"))
-                  this.addDma(new Dma(233, "Bluefield - Beckley - Oak Hill"))
-                  this.addDma(new Dma(234, "Boise"))
-                  this.addDma(new Dma(235, "Boston (Manchester)"))
-                  this.addDma(new Dma(236, "Bowling Green"))
-                  this.addDma(new Dma(237, "Buffalo"))
-                  this.addDma(new Dma(238, "Burlington - Plattsburgh"))
-                  this.addDma(new Dma(239, "Butte - Bozeman"))
-                  this.addDma(new Dma(240, "Casper - Riverton"))
-                  this.addDma(new Dma(241, "Cedar Rapids - Waterloo & Dubuque"))
-                  this.addDma(new Dma(242, "Champaign & Springfield - Decatur"))
-                  this.addDma(new Dma(243, "Charleston, SC"))
-                  this.addDma(new Dma(244, "Charleston-Huntington"))
-                  this.addDma(new Dma(245, "Charlotte"))
-                  this.addDma(new Dma(246, "Charlottesville"))
-                  this.addDma(new Dma(247, "Chattanooga"))
-                  this.addDma(new Dma(248, "Cheyenne - Scottsbluff"))
-                  this.addDma(new Dma(249, "Chicago"))
-                  this.addDma(new Dma(250, "Chico - Redding"))
-                  this.addDma(new Dma(251, "Cincinnati"))
-                  this.addDma(new Dma(252, "Clarksburg - Weston"))
-                  this.addDma(new Dma(253, "Cleveland"))
-                  this.addDma(new Dma(254, "Colorado Springs - Pueblo"))
-                  this.addDma(new Dma(255, "Columbia - Jefferson City"))
-                  this.addDma(new Dma(256, "Columbia, SC"))
-                  this.addDma(new Dma(257, "Columbus - Tupelo - West Point"))
-                  this.addDma(new Dma(258, "Columbus, GA"))
-                  this.addDma(new Dma(259, "Columbus, OH"))
-                  this.addDma(new Dma(260, "Corpus Christi"))
-                  this.addDma(new Dma(261, "Dallas - Fort Worth"))
-                  this.addDma(new Dma(262, "Davenport - Rock Island - Moline"))
-                  this.addDma(new Dma(263, "Dayton"))
-                  this.addDma(new Dma(264, "Denver"))
-                  this.addDma(new Dma(265, "Des Moines - Ames"))
-                  this.addDma(new Dma(266, "Detroit"))
-                  this.addDma(new Dma(267, "Dothan"))
-                  this.addDma(new Dma(268, "Duluth - Superior"))
-                  this.addDma(new Dma(269, "El Paso"))
-                  this.addDma(new Dma(270, "Elmira"))
-                  this.addDma(new Dma(271, "Erie"))
-                  this.addDma(new Dma(272, "Eugene"))
-                  this.addDma(new Dma(273, "Eureka"))
-                  this.addDma(new Dma(274, "Evansville"))
-                  this.addDma(new Dma(275, "Fairbanks"))
-                  this.addDma(new Dma(276, "Fargo - Valley City"))
-                  this.addDma(new Dma(277, "Flint - Saginaw - Bay City"))
-                  this.addDma(new Dma(278, "Florence - Myrtle Beach"))
-                  this.addDma(new Dma(279, "Fort Myers - Naples"))
-                  this.addDma(new Dma(280, "Fort Smith - Fayetteville - Springdale - Rogers"))
-                  this.addDma(new Dma(281, "Fort Wayne"))
-                  this.addDma(new Dma(282, "Fresno - Visalia"))
-                  this.addDma(new Dma(283, "Gainesville"))
-                  this.addDma(new Dma(284, "Glendive"))
-                  this.addDma(new Dma(285, "Grand Junction - Montrose"))
-                  this.addDma(new Dma(286, "Grand Rapids - Kalamazoo - Battle Creek"))
-                  this.addDma(new Dma(287, "Great Falls"))
-                  this.addDma(new Dma(288, "Green Bay - Appleton"))
-                  this.addDma(new Dma(289, "Greensboro - High Point - Winston-Salem"))
-                  this.addDma(new Dma(290, "Greenville - New Bern - Washington"))
-                  this.addDma(new Dma(291, "Greenville - Spartansburg - Asheville - Anderson"))
-                  this.addDma(new Dma(292, "Greenwood - Greenville"))
-                  this.addDma(new Dma(293, "Harlingen - Weslaco - Brownsville - McAllen"))
-                  this.addDma(new Dma(294, "Harrisburg - Lancaster - Lebanon - York"))
-                  this.addDma(new Dma(295, "Harrisonburg"))
-                  this.addDma(new Dma(296, "Hartford & New Haven"))
-                  this.addDma(new Dma(297, "Hattiesburg - Laurel"))
-                  this.addDma(new Dma(298, "Helena"))
-                  this.addDma(new Dma(299, "Honolulu"))
-                  this.addDma(new Dma(300, "Houston"))
-                  this.addDma(new Dma(301, "Huntsville - Decatur (Florence)"))
-                  this.addDma(new Dma(302, "Idaho Falls - Pocatello"))
-                  this.addDma(new Dma(303, "Indianapolis"))
-                  this.addDma(new Dma(304, "Jackson, MS"))
-                  this.addDma(new Dma(305, "Jackson, TN"))
-                  this.addDma(new Dma(306, "Jacksonville"))
-                  this.addDma(new Dma(307, "Johnstown - Altoona"))
-                  this.addDma(new Dma(308, "Jonesboro"))
-                  this.addDma(new Dma(309, "Joplin - Pittsburg"))
-                  this.addDma(new Dma(310, "Juneau"))
-                  this.addDma(new Dma(311, "Kansas City"))
-                  this.addDma(new Dma(312, "Knoxville"))
-                  this.addDma(new Dma(313, "La Crosse - Eau Claire"))
-                  this.addDma(new Dma(314, "Lafayette, IN"))
-                  this.addDma(new Dma(315, "Lafayette, LA"))
-                  this.addDma(new Dma(316, "Lake Charles"))
-                  this.addDma(new Dma(317, "Lansing"))
-                  this.addDma(new Dma(318, "Laredo"))
-                  this.addDma(new Dma(319, "Las Vegas"))
-                  this.addDma(new Dma(320, "Lexington"))
-                  this.addDma(new Dma(321, "Lima"))
-                  this.addDma(new Dma(322, "Lincoln & Hastings - Kearney"))
-                  this.addDma(new Dma(323, "Little Rock - Pine Bluff"))
-                  this.addDma(new Dma(324, "Los Angeles"))
-                  this.addDma(new Dma(325, "Louisville"))
-                  this.addDma(new Dma(326, "Lubbock"))
-                  this.addDma(new Dma(327, "Macon"))
-                  this.addDma(new Dma(328, "Madison"))
-                  this.addDma(new Dma(329, "Mankato"))
-                  this.addDma(new Dma(330, "Marquette"))
-                  this.addDma(new Dma(331, "Medford - Klamath Falls"))
-                  this.addDma(new Dma(332, "Memphis"))
-                  this.addDma(new Dma(333, "Meridian"))
-                  this.addDma(new Dma(334, "Miami - Fort Lauderdale"))
-                  this.addDma(new Dma(335, "Milwaukee"))
-                  this.addDma(new Dma(336, "Minneapolis - Saint Paul"))
-                  this.addDma(new Dma(337, "Minot - Bismarck - Dickinson"))
-                  this.addDma(new Dma(338, "Missoula"))
-                  this.addDma(new Dma(339, "Mobile - Pensacola (Fort Walton Beach)"))
-                  this.addDma(new Dma(340, "Monroe - El Dorado"))
-                  this.addDma(new Dma(341, "Monterey - Salinas"))
-                  this.addDma(new Dma(342, "Montgomery (Selma)"))
-                  this.addDma(new Dma(343, "Nashville"))
-                  this.addDma(new Dma(344, "New Orleans"))
-                  this.addDma(new Dma(345, "New York"))
-                  this.addDma(new Dma(346, "Norfolk - Portsmouth - Newport News"))
-                  this.addDma(new Dma(347, "North Platte"))
-                  this.addDma(new Dma(348, "Odessa - Midland"))
-                  this.addDma(new Dma(349, "Oklahoma City"))
-                  this.addDma(new Dma(350, "Omaha"))
-                  this.addDma(new Dma(351, "Orlando - Daytona Beach - Melbourne"))
-                  this.addDma(new Dma(352, "Ottumwa - Kirksville"))
-                  this.addDma(new Dma(353, "Paducah - Cape Girardeau - Harrisburg - Mt Vernon"))
-                  this.addDma(new Dma(354, "Palm Springs"))
-                  this.addDma(new Dma(355, "Panama City"))
-                  this.addDma(new Dma(356, "Parkersburg"))
-                  this.addDma(new Dma(357, "Peoria - Bloomington"))
-                  this.addDma(new Dma(358, "Philadelphia"))
-                  this.addDma(new Dma(359, "Phoenix"))
-                  this.addDma(new Dma(360, "Pittsburgh"))
-                  this.addDma(new Dma(361, "Portland - Auburn"))
-                  this.addDma(new Dma(362, "Portland, OR"))
-                  this.addDma(new Dma(363, "Presque Isle"))
-                  this.addDma(new Dma(364, "Providence - New Bedford"))
-                  this.addDma(new Dma(365, "Quincy - Hannibal - Keokuk"))
-                  this.addDma(new Dma(366, "Raleigh - Durham (Fayetteville)"))
-                  this.addDma(new Dma(367, "Rapid City"))
-                  this.addDma(new Dma(368, "Reno"))
-                  this.addDma(new Dma(369, "Richmond - Petersburg"))
-                  this.addDma(new Dma(370, "Roanoke - Lynchburg"))
-                  this.addDma(new Dma(371, "Rochester - Mason City - Austin"))
-                  this.addDma(new Dma(372, "Rochester, NY"))
-                  this.addDma(new Dma(373, "Rockford"))
-                  this.addDma(new Dma(374, "Sacramento - Stockton - Modesto"))
-                  this.addDma(new Dma(375, "Saint Joseph"))
-                  this.addDma(new Dma(376, "Saint Louis"))
-                  this.addDma(new Dma(377, "Salisbury"))
-                  this.addDma(new Dma(378, "Salt Lake City"))
-                  this.addDma(new Dma(379, "San Angelo"))
-                  this.addDma(new Dma(380, "San Antonio"))
-                  this.addDma(new Dma(381, "San Diego"))
-                  this.addDma(new Dma(382, "San Francisco - Oakland - San Jose"))
-                  this.addDma(new Dma(383, "Santa Barbara - Santa Maria - San Luis Obispo"))
-                  this.addDma(new Dma(384, "Savannah"))
-                  this.addDma(new Dma(385, "Seattle - Tacoma"))
-                  this.addDma(new Dma(386, "Sherman - Ada"))
-                  this.addDma(new Dma(387, "Shreveport"))
-                  this.addDma(new Dma(388, "Sioux City"))
-                  this.addDma(new Dma(389, "Sioux Falls (Mitchell)"))
-                  this.addDma(new Dma(390, "South Bend - Elkhart"))
-                  this.addDma(new Dma(391, "Spokane"))
-                  this.addDma(new Dma(392, "Springfield - Holyoke"))
-                  this.addDma(new Dma(393, "Springfield, MO"))
-                  this.addDma(new Dma(394, "Syracuse"))
-                  this.addDma(new Dma(395, "Tallahassee - Thomasville"))
-                  this.addDma(new Dma(396, "Tampa - Saint Petersburg (Sarasota)"))
-                  this.addDma(new Dma(397, "Terre Haute"))
-                  this.addDma(new Dma(398, "Toledo"))
-                  this.addDma(new Dma(399, "Topeka"))
-                  this.addDma(new Dma(400, "Traverse City - Cadillac"))
-                  this.addDma(new Dma(401, "Tri-Cities, TN-VA"))
-                  this.addDma(new Dma(402, "Tucson (Sierra Vista)"))
-                  this.addDma(new Dma(403, "Tulsa"))
-                  this.addDma(new Dma(404, "Twin Falls"))
-                  this.addDma(new Dma(405, "Tyler - Longview (Lufkin & Nacogdoches)"))
-                  this.addDma(new Dma(406, "Utica"))
-                  this.addDma(new Dma(407, "Victoria"))
-                  this.addDma(new Dma(408, "Waco - Temple - Bryan"))
-                  this.addDma(new Dma(409, "Washington DC (Hagerstown)"))
-                  this.addDma(new Dma(410, "Watertown"))
-                  this.addDma(new Dma(411, "Wausau - Rhinelander"))
-                  this.addDma(new Dma(412, "West Palm Beach - Fort Pierce"))
-                  this.addDma(new Dma(413, "Wheeling - Steubenville"))
-                  this.addDma(new Dma(414, "Wichita - Hutchinson"))
-                  this.addDma(new Dma(415, "Wichita Falls & Lawton"))
-                  this.addDma(new Dma(416, "Wilkes Barre - Scranton"))
-                  this.addDma(new Dma(417, "Wilmington"))
-                  this.addDma(new Dma(418, "Yakima - Pasco - Richland - Kennewick"))
-                  this.addDma(new Dma(419, "Youngstown"))
-                  this.addDma(new Dma(420, "Yuma - El Centro"))
-                  this.addDma(new Dma(421, "Zanesville"))
-                  this.addDma(new Dma(422, "Northern New Jersey"))
-                  this.addDma(new Dma(500, "All of Canada"))
-                  this.addDma(new Dma(501, "Barrie-Orillia"))
-                  this.addDma(new Dma(502, "Belleville-Peterborough"))
-                  this.addDma(new Dma(503, "Owen Sound"))
-                  this.addDma(new Dma(504, "Burnaby-New Westminster-Surrey"))
-                  this.addDma(new Dma(505, "Calgary-Banff"))
-                  this.addDma(new Dma(506, "Edmonton"))
-                  this.addDma(new Dma(507, "Fraser Valley"))
-                  this.addDma(new Dma(508, "Hamilton-Niagara"))
-                  this.addDma(new Dma(509, "Kitchener-Waterloo"))
-                  this.addDma(new Dma(510, "London-Sarnia"))
-                  this.addDma(new Dma(511, "Mississauga-Oakville"))
-                  this.addDma(new Dma(512, "Newfoundland"))
-                  this.addDma(new Dma(513, "NWT"))
-                  this.addDma(new Dma(514, "New Brunswick"))
-                  this.addDma(new Dma(515, "Northern Ontario"))
-                  this.addDma(new Dma(516, "Nova Scotia"))
-                  this.addDma(new Dma(517, "Nunavit"))
-                  this.addDma(new Dma(518, "Okanagan-Kootenays"))
-                  this.addDma(new Dma(519, "Ottawa-Gatineau"))
-                  this.addDma(new Dma(520, "PEI"))
-                  this.addDma(new Dma(521, "Prince George-North"))
-                  this.addDma(new Dma(522, "Montreal and Surrounding Area"))
-                  this.addDma(new Dma(523, "Red Deer"))
-                  this.addDma(new Dma(524, "Saskatchewan"))
-                  this.addDma(new Dma(527, "Toronto"))
-                  this.addDma(new Dma(528, "Vancouver"))
-                  this.addDma(new Dma(529, "Sunshine Coast-Islands"))
-                  this.addDma(new Dma(530, "Winnipeg-Brandon"))
-                  this.addDma(new Dma(531, "Yukon"))
-                  this.addDma(new Dma(601, "All of United Kingdom"))
-                  this.addDma(new Dma(602, "London"))
-                  this.addDma(new Dma(603, "South"))
-                  this.addDma(new Dma(604, "Midlands and Central"))
-                  this.addDma(new Dma(605, "Wales and North West"))
-                  this.addDma(new Dma(606, "North and North East"))
-                  this.addDma(new Dma(607, "Scotland"))
-                  this.addDma(new Dma(608, "All of Ireland"))
-                  this.addDma(new Dma(609, "Northern Ireland"))
-                  this.addDma(new Dma(610, "Germany"))
-                  this.addDma(new Dma(611, "Netherlands"))
-                  this.addDma(new Dma(612, "Sweden"))
-                  this.addDma(new Dma(613, "Turkey"))
-                  this.addDma(new Dma(701, "All of Australia"))
-                  this.addDma(new Dma(702, "New South Wales/Australian Capital Territory"))
-                  this.addDma(new Dma(703, "Queensland"))
-                  this.addDma(new Dma(704, "Western Australia"))
-                  this.addDma(new Dma(705, "Victoria/Tasmania"))
-                  this.addDma(new Dma(750, "All of New Zealand"))
-                  this.addDma(new Dma(751, "North Island"))
-                  this.addDma(new Dma(752, "South Island"))
-                  this.addDma(new Dma(801, "All of Mexico"))
-                  this.addDma(new Dma(802, "Mexico City and Metropolitan Area"))
-                  this.addDma(new Dma(803, "Monterrey"))
-                  this.addDma(new Dma(804, "Guadalajara"))
-                  this.addDma(new Dma(901, "All of Spain"))
-                  this.addDma(new Dma(902, "Barcelona"))
-                  this.addDma(new Dma(903, "Madrid"))
-    }
-    
-    addDma(dma)
-    {
-      this.data[dma.id] = dma
-      this.list.push(dma)
-    }
-  }
+ReactModal.setAppElement("#root");
 
-
+function App() {
 
   const [user, setUser] = useState()
   const [page, setPage] = useState()
   const [events, setEvents] = useState()
   const [event, setEvent] = useState()
-  const [cities, setCities] = useState()
-  const [dma, setDma] = useState(607)
-const [dmas, setDmas] = useState()
-useEffect(()=> {
-  const tempDmas = new Dmas()
-  setDmas(tempDmas);
-  // eslint-disable-next-line
-}, []
-)
+  const [selectedUser, setSelectedUser] = useState()
+  const [jwt, setJwt] = useState()
+  const [dma, setDma] = useState()
 
-  const users = {data:[], array:[]}
-  users.data = 
-      {tom:{username:'tom', password:'password'}
-      ,dick:{username:'dick', password:'password'}
-      ,harry:{username:'harry', password:'password'}
-      ,mary:{username:'mary', password:'password'}
-      ,jane:{username:'jane', password:'password'}
-      ,debbie:{username:'debbie', password:'password'}
-      }
+  const handleOpenRegisterModal = () => {
+    setPage('r');
+  };
 
-  for (let id in users.data)
-  {
-    users.array.push(users.data[id])
+  const handleCloseRegisterModal = () => {
+    setPage('l');
+  };
+
+  useEffect(() => {
+    let jwtoken = getCookie("jwt_token");
+
+    if (jwtoken !== false) {
+      loginWithToken(jwtoken)
+    }
+  }, [])
+
+  const loginWithToken = async (jwtoken) => {
+    const user = await authCheck(jwtoken)
+    setUser({ 'username': user.username })
+    setDma(user.dma)
+    setJwt(jwtoken)
+  }
+  const customStyles = {
+
+    content: {
+      backgroundColor: "black",
+      opacity: "0.8",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    }
   }
 
   return (
     <div className="App">
       <Header setUser={setUser} setPage={setPage} user={user} />
       {
-        user 
-        ? (page === 'l' ) 
-          ? <Events setPage={setPage} user={user} setEvent={setEvent} setEvents={setEvents} setCities={setCities} dmas={dmas} dma={dma} setDma={setDma} /> 
-          : (page === 'e')
-            ? <Event setPage={setPage} events={events} event={event} cities={cities} user={user} /> 
-            : (page === 'u' ) 
-              ? <Users setPage={setPage} user={user} users={users} /> 
-              : <div>cant find a page</div>
-        : (page === 'r') 
-          ? <Register setPage={setPage} />
-          : <Login setUser={setUser} setPage={setPage} users={users} />
+        user
+          ? (page === 'l')
+            ? <Events setPage={setPage} user={user} setEvent={setEvent} setEvents={setEvents} setDma={setDma} events={events} dma={dma} />
+            : (page === 'e')
+              ? <Event setPage={setPage} event={event} dma={dma} />
+              : (page === 'u')
+                ? <Users jwtToken={jwt} setPage={setPage} setSelectedUser={setSelectedUser} user={user} />
+                : (page === 'v')
+                  ? <User jwtToken={jwt} setPage={setPage} selectedUser={selectedUser} user={user} />
+                  :(page === 't')
+                    ? <UserUpdate jwtToken={jwt} setPage={setPage} setUser={setUser} setDma={setDma} selectedUser={selectedUser} user={user} />
+                    : (page === 'd')
+                      ? <UserDelete jwtToken={jwt} selectedUser={selectedUser} setUser={setUser} setPage={setPage} user={user} />
+                      : <Events setPage={setPage} user={user} setEvent={setEvent} setDma={setDma} events={events} dma={dma} />
+          : <Login setUser={setUser} setPage={setPage} setDma={setDma} handleOpenRegisterModal={handleOpenRegisterModal} />
       }
     </div>
   )
