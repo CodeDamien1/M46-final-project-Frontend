@@ -1,32 +1,32 @@
 .events-button {
     background: linear-gradient(to right, #ffa458, #bb3b0b);
-    border: solid 1px #FFA458;
-    border-radius: 1rem;
+    border: solid 0.01rem white;
+    border-radius: 0.5rem;
     color: white;
-    font-size: 2vw;
+    font-size: 0.8rem;
     width: 10vw;
-    padding: 2px;
-    margin: 1px;
+    padding: 0.1rem;
+    margin-top: 0.5rem;
     cursor: pointer;
 }
 
 .events-button:hover {
-    background-color: #FFA458;
-    border-color: #BA3B0A;
-    color: #BA3B0A;
+    background: linear-gradient(to right, #bb3b0b, #ffa458);
+    scale: 1.05;
 }
 
 
 .users-title {
-    color: #FFA458;
-    font-size: 2vw;
+    color: white;
+    font-size: 1rem;
+    margin: 0.5rem;
 }
 
 .list-user-name {
     background-color: transparent;
     border: none;
     color: #BA3B0A;
-    font-size: 2vw;
+    font-size: 1rem;
     width: 10vw;
     padding: 2px;
     margin: 3px;
@@ -60,14 +60,21 @@
     font-size: 2vw;
 }
 
-.list-user-name {
+.users-name {
     background-color: transparent;
     border: none;
-    font-size: 2vw;
+    color: white;
+    font-size: 1.5rem;
     width: 15vw;
     cursor: pointer;
+
 }
 
-.list-user-name:hover {
-    color: #BA3B0A;
+.users-name:hover {
+    color: #FFA458;
+}
+
+.users-message
+{
+    color: #FFA458;
 }

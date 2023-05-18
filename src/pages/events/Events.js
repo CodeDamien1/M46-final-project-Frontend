@@ -61,7 +61,7 @@ function Events({ setPage, user, setEvent, dma }) {
   return (
     <div className="App">
       <div>
-        <span className="event-title">events</span>
+        <span className="event-title">Events</span>
         <span className="user-name">
           User: <i>{user.username}</i>{" "}
         </span>

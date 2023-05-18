@@ -5,11 +5,6 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-:root {
-  --clr-primary-300: #ffa458;
-  --clr-secondary-400: #bb3b0b;
-  --clr-neutral-500: #111010;
-}
 
 .App {
   text-align: left;
@@ -64,9 +59,10 @@ body::before {
 /* Style the login and register forms */
 .App form {
   font-size: 0.8rem;
-  background: linear-gradient(to right, #ffa458, #bb3b0b);
+  background: none;
+  color: none;
   filter: opacity(0.7);
-  border: 0.5px solid #ffffff;
+  border: none;
   border-radius: 0.2rem;
   margin: auto;
   max-width: 200px;
