@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import "../../App.css";
 import "./Events.css";
 
-function Events({ setPage, user, setEvent, dma }) {
+function Events({ setPage, setEvent, dma }) 
+{
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log('fetch data')
         let response = await fetch(
           `${process.env.REACT_APP_API_URL}${dma}${process.env.REACT_APP_API_KEY}`
         );
@@ -67,8 +67,8 @@ function Events({ setPage, user, setEvent, dma }) {
   }
 
   function viewEvent(event) {
-    setEvent(event);
-    setPage("e");
+    setEvent(event)
+    setPage("e")
   }
 
   return (

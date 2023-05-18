@@ -1,7 +1,7 @@
 import '../../App.css'
 import './Event.css'
 
-function Event({ setPage, event})
+function Event({ setPage, event })
 {
 
   return (

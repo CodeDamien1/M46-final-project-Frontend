@@ -17,8 +17,6 @@ export const getCookie = (cookieName) =>
 {
     // find the cookie using a regualr expression
     const re = new RegExp(`(?<=${cookieName}=)[^;]*`)
-    console.log('regular expression')
-    console.log(re)
 
     try 
     {
@@ -36,7 +34,6 @@ export const authCheck = async (jwtToken) =>
 {
     try 
     {
-    
         const response = await fetch
         (`${process.env.REACT_APP_BASE_URL}/users/authcheck`, 
             {method: "GET"
@@ -49,9 +46,7 @@ export const authCheck = async (jwtToken) =>
 
         const data = await response.json()
     
-        console.log('Auth Check - ', data)
-    
-        return data.user.username;
+        return { username: data.user.username, dma: data.user.locality }
     
     } catch (error) 
     {
@@ -62,7 +57,5 @@ export const authCheck = async (jwtToken) =>
 
 export const deleteCookie = (cookieName) => 
 {
-
-    writeCookie (cookieName, "", -1);
-    
+    writeCookie (cookieName, "", -1);   
 }
