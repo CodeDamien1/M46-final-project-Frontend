@@ -62,9 +62,6 @@ function Events({ setPage, user, setEvent, dma }) {
     <div className="App">
       <div>
         <span className="event-title">Events</span>
-        <span className="user-name">
-          User: <i>{user.username}</i>{" "}
-        </span>
         <input
           type="button"
           value="users"
@@ -77,26 +74,20 @@ function Events({ setPage, user, setEvent, dma }) {
         {events.map((event, index) => {
           return (
             <div className="event-item" key={index}>
-              {event.imageUrl && (
-                <div className="event-image-container">
-                  <img
+              <div className="event-name">{event.name}</div>
+              <img
                     src={event.imageUrl}
                     alt={event.name}
                     className="event-image"
-                  />
-                </div>
-              )}
-              <div className="event-details">
-                <div className="event-name">{event.name}</div>
-                <div>{event.city}</div>
-                <div>{event.date}</div>
-                <input
-                  type="button"
-                  value="select"
-                  className="event-button"
-                  onClick={() => viewEvent(event)}
-                />
-              </div>
+              />
+              <div>{event.city}</div>
+              <div>{event.date}</div>
+              <input
+                type="button"
+                value="select"
+                className="event-button"
+                onClick={() => viewEvent(event)}
+              />
             </div>
           );
         })}
