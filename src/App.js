@@ -20,7 +20,6 @@ function App() {
   const [page, setPage] = useState()
   const [events, setEvents] = useState()
   const [event, setEvent] = useState()
-  const [cities, setCities] = useState()
   const [selectedUser, setSelectedUser] = useState()
   const [jwt, setJwt] = useState()
   const [dma, setDma] = useState()
@@ -35,7 +34,6 @@ function App() {
 
   useEffect(() => {
     let jwtoken = getCookie("jwt_token");
-    console.log(jwtoken)
 
     if (jwtoken !== false) {
       loginWithToken(jwtoken)
@@ -44,7 +42,8 @@ function App() {
 
   const loginWithToken = async (jwtoken) => {
     const user = await authCheck(jwtoken)
-    setUser({ 'username': user })
+    setUser({ 'username': user.username })
+    setDma(user.dma)
     setJwt(jwtoken)
   }
   const customStyles = {
@@ -64,9 +63,9 @@ function App() {
       {
         user
           ? (page === 'l')
-            ? <Events setPage={setPage} user={user} setEvent={setEvent} setEvents={setEvents} setCities={setCities} dma={dma} />
+            ? <Events setPage={setPage} user={user} setEvent={setEvent} setEvents={setEvents} setDma={setDma} events={events} dma={dma} />
             : (page === 'e')
-              ? <Event setPage={setPage} events={events} event={event} cities={cities} user={user} />
+              ? <Event setPage={setPage} event={event} dma={dma} />
               : (page === 'u')
                 ? <Users jwtToken={jwt} setPage={setPage} setSelectedUser={setSelectedUser} user={user} />
                 : (page === 'v')
@@ -75,7 +74,7 @@ function App() {
                     ? <UserUpdate jwtToken={jwt} setPage={setPage} setUser={setUser} setDma={setDma} selectedUser={selectedUser} user={user} />
                     : (page === 'd')
                       ? <UserDelete jwtToken={jwt} selectedUser={selectedUser} setUser={setUser} setPage={setPage} user={user} />
-                      : <Events setPage={setPage} user={user} setEvent={setEvent} setCities={setCities} dma={607} />
+                      : <Events setPage={setPage} user={user} setEvent={setEvent} setDma={setDma} events={events} dma={dma} />
           : <Login setUser={setUser} setPage={setPage} setDma={setDma} handleOpenRegisterModal={handleOpenRegisterModal} />
       }
       <ReactModal

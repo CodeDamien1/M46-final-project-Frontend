@@ -1,9 +1,7 @@
 import { writeCookie } from '../common'
 
-export const loginUser = async (username, password) => {
-    console.log('login User - username ' + username)
-    console.log('login User - password ' + password)
-
+export const loginUser = async (username, password) => 
+{
     try {
         const response = await fetch
             (`${process.env.REACT_APP_BASE_URL}/users/login`,
@@ -59,7 +57,7 @@ export const registerUser = async (firstName, surname, email, locality, username
                         )
                 }
             )
-        console.log('locality:', locality)
+
         const data = await response.json()
 
         if (data.errorMessage) 
@@ -148,8 +146,8 @@ export const updateUser = async (jwtToken, key, value, username) =>
 }
 
 
-export const deleteUser = async (username, jwtToken) => {
-    console.log('deleteUser (utils/index.js) username: ', username, ' jwtToken: ', jwtToken)
+export const deleteUser = async (username, jwtToken) => 
+{
     try {
         const response = await fetch
         (`${process.env.REACT_APP_BASE_URL}/users/deleteuser`,
@@ -166,7 +164,7 @@ export const deleteUser = async (username, jwtToken) => {
         )
 
         const data = await response.json() 
-        console.log('deleteUser (utils/index.js) - data', data)
+        
         if (data.errorMessage)
         {
             return {deleteSuccessful:false, message:data.errorMessage}
