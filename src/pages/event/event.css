@@ -1,0 +1,28 @@
+.event-item
+{
+    background-color:#ffa458;
+    text-align:center;
+    margin:1rem;
+    padding:1rem;
+}
+
+.event-image
+{
+    width:20rem;
+    height:10rem;
+    margin: 1rem;
+}
+
+.event-button
+{
+    background: linear-gradient(to right, #ffa458, #bb3b0b);
+    border-radius:2rem;
+    font-size:1.5rem;
+    width:10rem;
+    cursor:pointer;
+}
+.event-button:hover
+{
+    background: linear-gradient(to right, #bb3b0b, #ffa458);
+    scale: 1.05;
+}
