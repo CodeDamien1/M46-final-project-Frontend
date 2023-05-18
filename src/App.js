@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import ReactModal from "react-modal";
 import './App.css'
 import Header from './pages/header/Header'
 import Login from './pages/login/Login'
@@ -77,13 +76,6 @@ function App() {
                       : <Events setPage={setPage} user={user} setEvent={setEvent} setDma={setDma} events={events} dma={dma} />
           : <Login setUser={setUser} setPage={setPage} setDma={setDma} handleOpenRegisterModal={handleOpenRegisterModal} />
       }
-      <ReactModal
-        style={customStyles}
-        isOpen={page === 'r'}
-        onRequestClose={handleCloseRegisterModal}
-      >
-        <Register onClose={handleCloseRegisterModal} />
-      </ReactModal>
     </div>
   )
 }

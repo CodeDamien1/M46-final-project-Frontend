@@ -1,38 +1,40 @@
-import { writeCookie } from '../common'
+import {writeCookie} from '../common'
 
 export const loginUser = async (username, password) => 
 {
     try {
         const response = await fetch
-            (`${process.env.REACT_APP_BASE_URL}/users/login`,
-                {
-                    method: 'POST'
-                    , headers: { "Content-Type": "application/json" }
-                    , body: JSON.stringify
-                        (
-                            {"username": username
-                            ,"password": password
-                            }
-                        )
-                }
-            )
+        (`${process.env.REACT_APP_BASE_URL}/users/login`,
+            {method: 'POST'
+            ,headers: {"Content-Type": "application/json"}
+            ,body: JSON.stringify
+                (
+                    {"username":username
+                    ,"password":password
+                    }
+                )
+            }
+        )
 
         const data = await response.json()
+        console.log('After response: ' + JSON.stringify(data))
+        
+        writeCookie('jwt_token', data.user.token, 7)
+        
+        if (data.error)
+        {
+            return {message:data.error, loginValid:false}
+        }
+        else
+        {
+            return {user: data.user, loginValid:true}
+        }
 
-        if (data.errorMessage) 
-        {
-            return { message: data.errorMessage, loginValid: false }
-        }
-        else 
-        {
-            writeCookie('jwt_token', data.user.token, 7)
-            return { user: data.user, loginValid: true }
-        }
-    }
+    } 
     catch (error) 
     {
-        console.log('Login error (utils/index.js) - ' + error)
-        return { message: 'Login error (utils/index.js) - ' + error, loginValid: false }
+        console.log('Login User: ' + error)  
+        return {message:'Login error - ' + error, loginValid:false}     
     }
 }
 
@@ -150,16 +152,15 @@ export const deleteUser = async (username, jwtToken) =>
 {
     try {
         const response = await fetch
-        (`${process.env.REACT_APP_BASE_URL}/users/deleteuser`,
-            {method: 'DELETE'
-            ,headers: 
-                {"Content-Type": "application/json"
-                ,Authorization: `Bearer ${jwtToken}`
-                }
+        (`${process.env.REACT_APP_BASE_URL}/users/register`,
+            {method: 'POST'
+            ,headers: {"Content-Type": "application/json"}
             ,body: JSON.stringify
-              (
-                {"username":username}
-              )
+                (
+                    {"username":username
+                    ,"password": password
+                    }
+                )
             }
         )
 
@@ -167,19 +168,16 @@ export const deleteUser = async (username, jwtToken) =>
         
         if (data.errorMessage)
         {
-            return {deleteSuccessful:false, message:data.errorMessage}
+            return {message:data.errorMessage, userCreated:false}
         }
-        else if (data.message === 'failure') 
+        else
         {
-            return { deleteSuccessful: false, message: 'Delate of User "' + username + '" failed middleware error ' + data.message }
+            return {message:data.message, user:data.user, userCreated:true}
         }
-        else 
-        {
-            return { deleteSuccessful: true, message: 'User "' + username + '" successfully deleted from the table Users' }
-        }
-    }
-    catch (error) {
-        console.log(error)
-        return { message: 'Delete error (utils/index.js) - ' + error.message }
+    } 
+    catch (error) 
+    {
+        console.log(error) 
+        return {message:'Create User error - ' + error.message, userCreated:false}      
     }
 }
