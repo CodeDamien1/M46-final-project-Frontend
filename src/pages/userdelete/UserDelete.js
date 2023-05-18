@@ -44,7 +44,7 @@ function UserDelete({ jwtToken, setUser, setPage, selectedUser, user }) {
     <div className="App">
       <div className="user-title">Delete User</div>
       <div>
-        <div className="user-message"><br></br><br></br>Are you sure you want to delete user "{selectedUser.username}" from tables User?<br></br><br></br></div>
+        <div className="user-message"><br></br><br></br>Are you sure you want to delete user "{selectedUser.username}"?<br></br><br></br></div>
       </div>
       <form onSubmit={userDelete}>
         <input type="button" className="user-buttons" value="No" onClick={() => setPage('v')} />
