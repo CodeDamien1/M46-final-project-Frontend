@@ -28,15 +28,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 10px;
 }
 
 .event-item {
-    background-color: #FFA458;
-    border: solid 2px #BA3B0A;
-    border-radius: 2vw;
-    margin: 1vw;
-    width: 15vw;
-    height: 15vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px;
 }
 
 .event-button {
@@ -48,24 +47,56 @@
 }
 
 .event-button:hover {
+    transform: scale(1.1);
+    transition: ease-in-out 0.1s;
     background: linear-gradient(to right, #bb3b0b, #ffa458);
     scale: 1.05;
 }
+   
+.event-image-container {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 0%;
+  }
 
-.event-item {
+  .event-item {
+    position: relative;
     display: flex;
     align-items: center;
-    border: 1px solid black;
     padding: 10px;
-}
+    
+  }
+  
+  .event-details {
+    position: absolute;
+    font-size: 14px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 60%;
+    color: white;
+    padding: 10px;
+    z-index: 2;
+  }
+
+  .event-details:hover {
+    opacity: 100%;
+    transition: ease-in-out 0.1s;
+  }
+
+.event-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 2%;
+  }
 
 .event-image {
     width: 16vh;
     height: 16vh;
     object-fit: contain;
-}
-
-.event-details {
-    display: flex;
-    flex-direction: column;
 }
