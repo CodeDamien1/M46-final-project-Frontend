@@ -14,7 +14,7 @@ function Header({ setUser, setPage, user }) {
     return (
         <div className="App">
             <div>
-                <img src={headerImage} height="100px" width="auto" alt=""></img>
+                <img src={headerImage} height="160px" width="auto" alt=""></img>
                 <div className="header-line">
                     {
                         user
