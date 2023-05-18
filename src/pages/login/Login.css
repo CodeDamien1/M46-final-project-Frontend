@@ -41,7 +41,11 @@ label
     border: solid 0.01rem white;
     color: white;
     padding: 0.5rem;
+}
 
+.login-input
+{
+    font-size: 2rem;
 }
 
 input.login-buttons 
@@ -50,6 +54,8 @@ input.login-buttons
     background-color: none;
     margin-top: 0.25rem;
     border: 0.5px solid white;
+    font-size:2rem;
+    width:10rem;
 }
 
 input.delete-button 
